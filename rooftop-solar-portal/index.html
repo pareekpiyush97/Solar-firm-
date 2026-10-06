@@ -4,230 +4,225 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rooftop Solar Yojana Portal</title>
-<meta name="description" content="Government-style rooftop solar portal template modelled on PM Surya Ghar's layout and workflow — multi-role login dropdown, dropdown nav, map-backed hero, quick-apply steps, subsidy calculator. Generic placeholder branding.">
+<meta name="description" content="Premium government-style rooftop solar portal template modelled on PM Surya Ghar's layout and workflow — glassmorphic header, multi-role login dropdown, map-dot hero, quick-apply steps and subsidy calculator. Generic placeholder branding.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
-  /* Layout: e-gov portal clone-style — tricolor top bar, ministry+logo header with action buttons & multi-role Login dropdown, blue dropdown nav, map-dot hero with quote, quick-process rail, tabbed login, benefits, counters, calculator, footer. Light theme. Template with generic branding (not an official site). */
+  /* Premium e-gov portal — glass header, gradient hero with map dots, multi-role login dropdown, dropdown nav, gradient process rail, tabbed login, calculator, counters, footer. Light theme, placeholder branding. */
   :root{
     color-scheme: light;
-    --bg:#f3f6fb; --surface:#fff; --surface-2:#eef3fa; --ink:#14233a; --muted:#54627a; --line:#d8e2ef;
-    --blue:#1763b0;        /* portal blue (title/links) */
-    --blue-d:#0f4f94;      /* darker */
-    --topbar:#1b5faa;      /* gov top bar */
-    --saffron:#ff8c1a; --sun1:#ff6a1a; --sun2:#ffb020; /* logo burst */
-    --green:#138808;
-    --shadow:0 1px 2px rgba(20,35,58,.06),0 12px 30px rgba(20,35,58,.10);
-    --shadow-sm:0 1px 2px rgba(20,35,58,.06),0 4px 12px rgba(20,35,58,.06);
-    --r:10px; --maxw:1240px;
-    --f:"Segoe UI",system-ui,-apple-system,"Noto Sans",sans-serif;
+    --bg:#eef3fb; --surface:#ffffff; --surface-2:#f1f5fc; --ink:#111f36; --muted:#5a6880; --line:#e3e9f3;
+    --blue:#1a52c9; --blue-d:#103a9e; --blue-ink:#0c2a6e;
+    --saffron:#ff8a12; --saffron-2:#ffb43d; --gold:#f4a900;
+    --green:#15a05a; --danger:#d1453b;
+    --grad-blue:linear-gradient(135deg,#1a52c9,#0f3a9e);
+    --grad-sun:linear-gradient(135deg,#ff8a12,#ffb43d);
+    --shadow-xs:0 1px 2px rgba(17,31,54,.06);
+    --shadow:0 2px 6px rgba(17,31,54,.06),0 14px 34px rgba(17,31,54,.10);
+    --shadow-sm:0 1px 2px rgba(17,31,54,.05),0 6px 16px rgba(17,31,54,.07);
+    --shadow-blue:0 10px 26px rgba(26,82,201,.30);
+    --shadow-sun:0 10px 24px rgba(255,138,18,.35);
+    --r:14px; --r-lg:22px; --maxw:1200px;
+    --f-display:"Sora","Segoe UI",system-ui,sans-serif;
+    --f-body:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
   }
   *{box-sizing:border-box}
-  body{background:var(--bg);color:var(--ink);font-family:var(--f);line-height:1.5}
-  h1,h2,h3,h4{margin:0;line-height:1.12;text-wrap:balance}
+  body{background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{margin:0;line-height:1.14;text-wrap:balance;font-family:var(--f-display)}
   p{margin:0} a{color:inherit}
-  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:18px}
-  .btn{display:inline-flex;align-items:center;gap:.45rem;border:1px solid transparent;border-radius:8px;padding:.6rem 1rem;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;transition:filter .15s,transform .08s}
-  .btn:active{transform:translateY(1px)} .btn:hover{filter:brightness(1.05)}
-  .btn-blue{background:var(--blue);color:#fff}
-  .btn-saffron{background:var(--saffron);color:#3a2200}
-  .btn-outline{background:#fff;border-color:#b9d2ee;color:var(--blue);font-weight:700}
-  .btn-outline-w{background:transparent;border:1px solid rgba(255,255,255,.6);color:#fff}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm)}
-  :focus-visible{outline:3px solid var(--saffron);outline-offset:2px;border-radius:5px}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid transparent;border-radius:11px;padding:.68rem 1.15rem;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .14s ease,box-shadow .18s,filter .15s}
+  .btn:hover{transform:translateY(-2px)} .btn:active{transform:translateY(0)}
+  .btn-blue{background:var(--grad-blue);color:#fff;box-shadow:var(--shadow-blue)}
+  .btn-sun{background:var(--grad-sun);color:#3a2200;box-shadow:var(--shadow-sun)}
+  .btn-outline{background:#fff;border-color:#c9d8f3;color:var(--blue);box-shadow:var(--shadow-xs)}
+  .btn-outline-w{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.5);color:#fff;backdrop-filter:blur(6px)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);transition:transform .18s ease,box-shadow .2s}
+  .lift:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  :focus-visible{outline:3px solid var(--saffron);outline-offset:2px;border-radius:6px}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-  .demo{background:var(--saffron);color:#3a2200;text-align:center;font-size:.78rem;font-weight:700;padding:.35rem 1rem}
+  .demo{background:var(--grad-sun);color:#3a2200;text-align:center;font-size:.78rem;font-weight:700;padding:.4rem 1rem}
 
-  /* ===== tricolor top bar ===== */
-  .topbar{background:var(--topbar);color:#fff;font-size:.86rem}
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.45rem}
+  /* tricolor top bar */
+  .topbar{background:var(--grad-blue);color:#eaf0fd;font-size:.86rem;position:relative}
+  .topbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,#ff9933 0 33%,#ffffff 33% 66%,#138808 66% 100%)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.5rem}
   .topbar .l{display:flex;align-items:center;gap:.6rem;font-weight:600}
-  .flag{width:26px;height:17px;border-radius:2px;overflow:hidden;display:inline-block;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.4)}
-  .flag i{display:block;height:33.33%}
-  .flag .s{background:#ff9933}.flag .w{background:#fff;position:relative}.flag .g{background:#138808}
+  .flag{width:26px;height:17px;border-radius:3px;overflow:hidden;display:inline-block;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.4)}
+  .flag i{display:block;height:33.33%}.flag .s{background:#ff9933}.flag .w{background:#fff;position:relative}.flag .g{background:#138808}
   .flag .w::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;border:1px solid #0a3d91;border-radius:50%;transform:translate(-50%,-50%)}
   .socials{display:flex;gap:.5rem}
-  .socials a{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.15);display:grid;place-items:center;color:#fff;text-decoration:none}
-  .socials a:hover{background:rgba(255,255,255,.28)}
+  .socials a{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;color:#fff;text-decoration:none;transition:.15s;font-size:.82rem}
+  .socials a:hover{background:#fff;color:var(--blue);transform:translateY(-2px)}
 
-  /* ===== header ===== */
-  header.site{background:#fff;border-bottom:1px solid var(--line)}
-  header.site .wrap{display:flex;align-items:center;gap:1rem;padding-block:.7rem;flex-wrap:wrap}
+  /* header (glass) */
+  header.site{background:rgba(255,255,255,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  header.site .wrap{display:flex;align-items:center;gap:1rem;padding-block:.8rem;flex-wrap:wrap}
   .ministry{display:flex;align-items:center;gap:.6rem;padding-right:1rem;border-right:1px solid var(--line)}
-  .ministry svg{width:40px;height:52px;flex:none}
-  .ministry .mt{font-size:.6rem;font-weight:700;color:#444;line-height:1.25;letter-spacing:.02em}
+  .ministry svg{width:38px;height:50px;flex:none}
+  .ministry .mt{font-size:.6rem;font-weight:700;color:#5a6880;line-height:1.3;letter-spacing:.02em}
   .ministry .mt b{color:var(--ink)}
-  .plogo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
-  .burst{width:52px;height:52px;flex:none}
-  .plogo .pt1{font-weight:800;font-size:1.12rem;color:var(--blue);line-height:1.1}
-  .plogo .pt2{font-weight:800;font-size:1.12rem;color:var(--blue-d)}
+  .plogo{display:flex;align-items:center;gap:.65rem;text-decoration:none}
+  .burst{width:54px;height:54px;flex:none;filter:drop-shadow(0 6px 12px rgba(255,138,18,.3))}
+  .plogo .pt1{font-weight:800;font-size:1.14rem;color:var(--blue);line-height:1.1;font-family:var(--f-display)}
+  .plogo .pt2{font-weight:800;font-size:1.14rem;color:var(--blue-ink);font-family:var(--f-display)}
   .hactions{margin-left:auto;display:flex;gap:.55rem;align-items:center}
-  @media (max-width:980px){.hactions{width:100%;margin-left:0;flex-wrap:wrap}}
+  @media (max-width:1040px){.hactions{width:100%;margin-left:0;flex-wrap:wrap}}
 
-  /* login dropdown */
   .dd{position:relative}
-  .dd-menu{position:absolute;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:240px;padding:.4rem;z-index:60;display:none}
+  .dd-menu{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);min-width:264px;padding:.5rem;z-index:60;display:none;animation:pop .14s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
   .dd-menu.open{display:block}
-  .dd-menu a{display:block;padding:.6rem .8rem;border-radius:7px;text-decoration:none;color:var(--ink);font-size:.9rem;font-weight:600}
-  .dd-menu a:hover{background:var(--surface-2);color:var(--blue)}
+  .dd-menu a{display:flex;align-items:center;gap:.6rem;padding:.6rem .7rem;border-radius:10px;text-decoration:none;color:var(--ink);font-size:.9rem;font-weight:600;transition:.12s}
+  .dd-menu a:hover{background:var(--surface-2);color:var(--blue);transform:translateX(3px)}
+  .dd-menu a .dot{width:28px;height:28px;border-radius:8px;background:var(--surface-2);display:grid;place-items:center;color:var(--blue);flex:none;font-size:.8rem}
 
-  /* ===== nav ===== */
-  .navrow{background:#fff;border-bottom:3px solid var(--blue);position:sticky;top:env(safe-area-inset-top,0px);z-index:50;box-shadow:var(--shadow-sm)}
+  /* nav */
+  .navrow{background:#fff;position:sticky;top:0;z-index:50;box-shadow:var(--shadow-xs);border-bottom:1px solid var(--line)}
+  .navrow::before{content:"";display:block;height:3px;background:var(--grad-blue)}
   .navrow .wrap{display:flex;align-items:center;gap:.1rem;flex-wrap:wrap}
   .navitem{position:relative}
-  .navitem>a,.navitem>button{display:inline-flex;align-items:center;gap:.35rem;color:var(--ink);background:none;border:none;font:inherit;font-weight:600;font-size:.92rem;padding:.85rem .8rem;cursor:pointer;text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-3px}
-  .navitem>a.active,.navitem:hover>a,.navitem:hover>button{color:var(--blue);border-bottom-color:var(--saffron)}
-  .submenu{position:absolute;left:0;top:100%;background:#fff;border:1px solid var(--line);border-radius:0 0 10px 10px;box-shadow:var(--shadow);min-width:210px;padding:.3rem;display:none;z-index:55}
+  .navitem>a,.navitem>button{display:inline-flex;align-items:center;gap:.35rem;color:var(--ink);background:none;border:none;font:inherit;font-weight:600;font-size:.92rem;padding:.9rem .85rem;cursor:pointer;text-decoration:none;position:relative;transition:color .15s}
+  .navitem>a::after,.navitem>button::after{content:"";position:absolute;left:.85rem;right:.85rem;bottom:.5rem;height:2px;background:var(--grad-sun);border-radius:2px;transform:scaleX(0);transition:transform .18s}
+  .navitem>a.active::after,.navitem:hover>a::after,.navitem:hover>button::after{transform:scaleX(1)}
+  .navitem:hover>a,.navitem:hover>button,.navitem>a.active{color:var(--blue)}
+  .submenu{position:absolute;left:0;top:100%;background:#fff;border:1px solid var(--line);border-radius:0 0 14px 14px;box-shadow:var(--shadow);min-width:220px;padding:.4rem;display:none;z-index:55}
   .navitem:hover .submenu,.submenu.open{display:block}
-  .submenu a{display:block;padding:.55rem .75rem;border-radius:6px;font-size:.88rem;font-weight:600;color:var(--ink);text-decoration:none}
+  .submenu a{display:block;padding:.55rem .75rem;border-radius:9px;font-size:.88rem;font-weight:600;color:var(--ink);text-decoration:none;transition:.12s}
   .submenu a:hover{background:var(--surface-2);color:var(--blue)}
-  .navtoggle{display:none;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:.5rem .8rem;margin:.4rem 0;cursor:pointer;font-weight:700}
-  @media (max-width:980px){
+  .navtoggle{display:none;background:var(--grad-blue);color:#fff;border:none;border-radius:10px;padding:.55rem .9rem;margin:.4rem 0;cursor:pointer;font-weight:700;box-shadow:var(--shadow-blue)}
+  @media (max-width:1040px){
     .navrow .wrap{flex-direction:column;align-items:stretch}
-    .navlinks{display:none;flex-direction:column}
-    .navlinks.open{display:flex}
+    .navlinks{display:none;flex-direction:column} .navlinks.open{display:flex}
     .navitem>a,.navitem>button{width:100%;justify-content:space-between;border-top:1px solid var(--line)}
+    .navitem>a::after,.navitem>button::after{display:none}
     .submenu{position:static;box-shadow:none;border:none;padding-left:1rem}
-    .navitem:hover .submenu{display:none}
-    .submenu.open{display:block}
-    .navtoggle{display:inline-block}
+    .navitem:hover .submenu{display:none} .submenu.open{display:block} .navtoggle{display:inline-block}
   }
 
-  /* ===== hero ===== */
-  .hero{background:#fff;position:relative;overflow:hidden}
-  .hero .mapbg{position:absolute;inset:0;background-image:radial-gradient(var(--blue) 1.3px,transparent 1.3px);background-size:16px 16px;opacity:.12;-webkit-mask-image:radial-gradient(60% 80% at 35% 50%,#000,transparent 75%);mask-image:radial-gradient(60% 80% at 35% 50%,#000,transparent 75%)}
-  .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:1.5rem;align-items:end;padding-top:2.4rem;padding-bottom:0;z-index:1}
-  @media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-bottom:1.5rem}}
-  .hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;color:var(--ink)}
-  .hero h1 .b{display:block;color:var(--blue)}
-  .hero blockquote{margin:1.4rem 0 0;font-size:1rem;color:var(--muted);max-width:58ch;font-style:italic;border-left:3px solid var(--saffron);padding-left:1rem}
-  .attrib{margin-top:1.2rem}
-  .attrib .nm{font-weight:800;color:var(--blue);font-size:1.1rem}
-  .attrib .dz{color:var(--blue-d);font-size:.9rem}
-  .attrib .ph{font-size:.72rem;color:var(--muted);margin-top:.2rem}
-  .hero .figure{align-self:end;display:flex;justify-content:center}
-  .silhouette{width:210px;height:230px;background:linear-gradient(160deg,#dce8f6,#eef4fb);border-radius:14px 14px 0 0;display:grid;place-items:center;color:#9bb4d2;border:1px dashed #b9cde6;border-bottom:none}
-  @media (max-width:900px){.silhouette{width:160px;height:170px}}
-  .herocta{position:relative;z-index:1;background:linear-gradient(90deg,var(--blue-d),var(--blue));color:#fff}
+  /* hero */
+  .hero{background:var(--grad-blue);color:#fff;position:relative;overflow:hidden}
+  .hero .mapbg{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.9) 1.3px,transparent 1.3px);background-size:18px 18px;opacity:.10;-webkit-mask-image:radial-gradient(60% 85% at 32% 50%,#000,transparent 72%);mask-image:radial-gradient(60% 85% at 32% 50%,#000,transparent 72%)}
+  .hero .glow{position:absolute;border-radius:50%;filter:blur(10px);pointer-events:none}
+  .hero .g1{width:360px;height:360px;background:radial-gradient(circle,rgba(255,138,18,.5),transparent 68%);right:-70px;top:-90px}
+  .hero .g2{width:280px;height:280px;background:radial-gradient(circle,rgba(110,170,255,.45),transparent 70%);left:-60px;bottom:-110px}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:1.6rem;align-items:center;padding-block:clamp(2.4rem,6vw,4rem);z-index:1}
+  @media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+  .hero .tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.35rem .9rem;font-size:.78rem;font-weight:700;backdrop-filter:blur(6px)}
+  .hero h1{font-size:clamp(2rem,5.2vw,3.6rem);font-weight:800;margin-top:1rem;letter-spacing:-.015em}
+  .hero h1 .y{background:var(--grad-sun);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero blockquote{margin:1.3rem 0 0;font-size:1rem;color:#dbe6fb;max-width:54ch;font-style:italic;border-left:3px solid var(--saffron);padding-left:1rem}
+  .attrib{margin-top:1.2rem} .attrib .nm{font-weight:800;color:#fff;font-size:1.1rem;font-family:var(--f-display)} .attrib .dz{color:#bcd0f5;font-size:.9rem} .attrib .ph{font-size:.72rem;color:#9fb6e6;margin-top:.2rem}
+  .hero .figure{display:flex;justify-content:center}
+  .silhouette{width:220px;height:240px;background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(255,255,255,.04));border:1px dashed rgba(255,255,255,.4);border-radius:20px;display:grid;place-items:center;color:rgba(255,255,255,.7);backdrop-filter:blur(4px)}
+  @media (max-width:900px){.silhouette{width:170px;height:180px}}
+  .herocta{position:relative;z-index:1;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.18)}
   .herocta .wrap{display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:1rem}
-  .herocta .sub{display:inline-flex;align-items:baseline;gap:.4rem;font-weight:700}
-  .herocta .sub b{font-size:1.4rem;color:var(--sun2)}
+  .herocta .sub{display:inline-flex;align-items:baseline;gap:.4rem;font-weight:700;color:#fff}
+  .herocta .sub b{font-size:1.5rem;background:var(--grad-sun);-webkit-background-clip:text;background-clip:text;color:transparent}
 
   /* sections */
-  .sec{padding-block:2.6rem}
-  .sec h2{text-align:center;color:var(--blue);font-size:clamp(1.4rem,3vw,2rem)}
-  .sec .sub{text-align:center;color:var(--muted);margin-top:.4rem;max-width:62ch;margin-inline:auto}
+  .sec{padding-block:clamp(2.6rem,5.5vw,4rem)}
+  .sec .lead2{text-align:center;max-width:62ch;margin-inline:auto}
+  .sec .eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;background:var(--grad-sun);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sec h2{color:var(--ink);font-size:clamp(1.5rem,3.2vw,2.2rem);margin-top:.5rem}
+  .sec .sub{color:var(--muted);margin-top:.5rem}
 
-  /* quick process */
-  .rail{display:grid;grid-template-columns:repeat(4,1fr);margin-top:2rem}
-  @media (max-width:900px){.rail{grid-template-columns:repeat(2,1fr);gap:1.2rem}}
+  /* process rail */
+  .rail{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.2rem}
+  @media (max-width:900px){.rail{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:480px){.rail{grid-template-columns:1fr}}
-  .pstep{position:relative;padding:0 1rem;text-align:center}
-  .pstep:not(:last-child)::after{content:"";position:absolute;top:28px;right:0;width:100%;height:2px;background:repeating-linear-gradient(90deg,var(--saffron) 0 8px,transparent 8px 16px);transform:translateX(50%)}
-  @media (max-width:900px){.pstep::after{display:none}}
-  .pnum{width:58px;height:58px;margin:0 auto;border-radius:50%;background:#fff;border:2px solid var(--saffron);color:var(--blue);display:grid;place-items:center;font-size:1.4rem;font-weight:800;position:relative;z-index:1}
-  .pstep h4{margin-top:.8rem;font-size:1rem;color:var(--blue)}
-  .pstep p{font-size:.82rem;color:var(--muted);margin-top:.3rem}
+  .pstep{padding:1.6rem 1.3rem;text-align:center;position:relative}
+  .pnum{width:62px;height:62px;margin:0 auto;border-radius:18px;background:var(--grad-blue);color:#fff;display:grid;place-items:center;font-size:1.5rem;font-weight:800;font-family:var(--f-display);box-shadow:var(--shadow-blue);transform:rotate(-6deg)}
+  .pstep:nth-child(even) .pnum{background:var(--grad-sun);color:#3a2200;box-shadow:var(--shadow-sun)}
+  .pstep h4{margin-top:1rem;font-size:1.05rem;color:var(--ink)}
+  .pstep p{font-size:.84rem;color:var(--muted);margin-top:.4rem}
 
-  /* register + login row */
-  .getstarted{background:var(--surface-2);border-block:1px solid var(--line)}
+  /* get started */
+  .getstarted{background:linear-gradient(180deg,#f1f5fc,#eaf0fb);border-block:1px solid var(--line)}
   .gs{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start}
   @media (max-width:880px){.gs{grid-template-columns:1fr}}
-  form.qreg,.logincard{padding:0}
-  .ctitle{background:var(--blue);color:#fff;padding:.8rem 1.2rem;font-weight:700;border-radius:var(--r) var(--r) 0 0}
-  .cbody{padding:1.3rem}
-  .field{display:flex;flex-direction:column;gap:.25rem;margin-top:.7rem}
-  .field label{font-size:.78rem;font-weight:700}
-  .field input,.field select{font:inherit;padding:.6rem;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
-  .cbody .btn{width:100%;justify-content:center;margin-top:.9rem}
-  .msg{font-size:.8rem;font-weight:700;margin-top:.6rem;color:var(--green)}
-  .tabs{display:grid;grid-template-columns:repeat(4,1fr)}
-  .tabs button{border:none;background:var(--surface-2);color:var(--muted);font:inherit;font-weight:700;font-size:.8rem;padding:.75rem .3rem;cursor:pointer;border-bottom:3px solid transparent}
-  .tabs button.active{background:#fff;color:var(--blue);border-bottom-color:var(--saffron)}
-  .linkrow{text-align:center;font-size:.82rem;margin-top:.8rem;color:var(--muted)}
-  .linkrow a{color:var(--blue);font-weight:700;text-decoration:none}
+  .ctitle{background:var(--grad-blue);color:#fff;padding:1rem 1.3rem;font-weight:800;font-family:var(--f-display);border-radius:var(--r-lg) var(--r-lg) 0 0}
+  .cbody{padding:1.4rem}
+  .field{display:flex;flex-direction:column;gap:.3rem;margin-top:.8rem}
+  .field label{font-size:.78rem;font-weight:700;color:var(--ink)}
+  .field input,.field select{font:inherit;padding:.72rem .8rem;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);transition:.15s}
+  .field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,82,201,.12);outline:none}
+  .cbody .btn{width:100%;justify-content:center;margin-top:1rem}
+  .msg{font-size:.82rem;font-weight:700;margin-top:.7rem;color:var(--green)}
+  .tabs{display:grid;grid-template-columns:repeat(4,1fr);padding:.35rem;gap:.25rem;background:var(--surface-2);border-radius:var(--r-lg) var(--r-lg) 0 0}
+  .tabs button{border:none;background:transparent;color:var(--muted);font:inherit;font-weight:700;font-size:.82rem;padding:.6rem .3rem;cursor:pointer;border-radius:12px;transition:.15s}
+  .tabs button.active{background:#fff;color:var(--blue);box-shadow:var(--shadow-xs)}
+  .linkrow{text-align:center;font-size:.82rem;margin-top:.9rem;color:var(--muted)} .linkrow a{color:var(--blue);font-weight:700;text-decoration:none}
 
   /* benefits */
-  .ben{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.8rem}
-  @media (max-width:900px){.ben{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:480px){.ben{grid-template-columns:1fr}}
-  .ben .b{padding:1.2rem;text-align:center}
-  .ben .ic{width:52px;height:52px;margin:0 auto .7rem;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;color:var(--blue)}
-  .ben h4{font-size:.98rem;color:var(--blue)} .ben p{font-size:.82rem;color:var(--muted);margin-top:.3rem}
+  .ben{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+  @media (max-width:900px){.ben{grid-template-columns:repeat(2,1fr)}} @media (max-width:480px){.ben{grid-template-columns:1fr}}
+  .ben .b{padding:1.5rem 1.3rem;text-align:center}
+  .ben .ic{width:58px;height:58px;margin:0 auto .9rem;border-radius:16px;background:var(--surface-2);display:grid;place-items:center;color:var(--blue);transition:.2s}
+  .ben .b:hover .ic{background:var(--grad-blue);color:#fff;transform:scale(1.06)}
+  .ben h4{font-size:1rem;color:var(--ink)} .ben p{font-size:.84rem;color:var(--muted);margin-top:.4rem}
 
   /* counters */
-  .counters{background:var(--blue-d);color:#fff}
-  .counters .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:2rem;text-align:center}
+  .counters{background:var(--grad-blue);color:#fff;position:relative;overflow:hidden}
+  .counters::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.7) 1px,transparent 1px);background-size:22px 22px;opacity:.07}
+  .counters .wrap{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:2.4rem;text-align:center}
   @media (max-width:640px){.counters .wrap{grid-template-columns:repeat(2,1fr)}}
-  .counters .n{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;color:var(--sun2);font-variant-numeric:tabular-nums}
-  .counters .l{font-size:.82rem;opacity:.85;margin-top:.2rem}
+  .counters .n{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;font-family:var(--f-display);background:var(--grad-sun);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+  .counters .l{font-size:.82rem;opacity:.9;margin-top:.3rem}
 
   /* calc */
-  .calc{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:1.8rem;align-items:stretch}
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:2rem;align-items:stretch}
   @media (max-width:760px){.calc{grid-template-columns:1fr}}
-  .calc .p{padding:1.4rem}
+  .calc .p{padding:1.6rem}
   .range{width:100%;accent-color:var(--blue)}
-  .kv{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.92rem}
-  .kv:last-child{border-bottom:none}.kv .v{font-weight:800;font-variant-numeric:tabular-nums}
-  .result{background:var(--blue);color:#fff;border-radius:var(--r);padding:1.4rem;display:flex;flex-direction:column;justify-content:center;gap:.3rem}
-  .result .big{font-size:clamp(2rem,6vw,2.8rem);font-weight:800;color:var(--sun2);font-variant-numeric:tabular-nums}
-  .result .cap{font-size:.82rem;opacity:.9}
+  .kv{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+  .kv:last-child{border-bottom:none}.kv .v{font-weight:800;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .result{background:var(--grad-blue);color:#fff;border-radius:var(--r-lg);padding:1.6rem;display:flex;flex-direction:column;justify-content:center;gap:.3rem;box-shadow:var(--shadow-blue);position:relative;overflow:hidden}
+  .result::after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,138,18,.5),transparent 70%);right:-40px;top:-40px}
+  .result .big{font-size:clamp(2.2rem,6vw,3rem);font-weight:800;font-family:var(--f-display);background:var(--grad-sun);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums;position:relative}
+  .result .cap{font-size:.84rem;opacity:.92;position:relative}
+
+  /* faq */
+  details{border:1px solid var(--line);border-radius:14px;background:#fff;padding:.1rem 1.2rem;margin-bottom:.7rem;box-shadow:var(--shadow-xs);transition:.15s}
+  details[open]{box-shadow:var(--shadow-sm)}
+  summary{cursor:pointer;font-weight:700;padding:1rem 0;list-style:none;display:flex;justify-content:space-between;gap:1rem;color:var(--ink)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--saffron);font-size:1.4rem;font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);font-size:.9rem;padding-bottom:1rem}
 
   /* footer */
-  footer.site{background:#0f2b50;color:#c4d4ea}
-  footer.site .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:1.4rem;padding-block:2.2rem}
-  @media (max-width:820px){footer.site .wrap{grid-template-columns:1fr 1fr}}
-  @media (max-width:460px){footer.site .wrap{grid-template-columns:1fr}}
-  footer h5{color:#fff;font-size:.92rem;margin-bottom:.6rem}
-  footer a{display:block;color:#c4d4ea;text-decoration:none;font-size:.85rem;padding:.18rem 0}
-  footer a:hover{color:var(--sun2)}
-  .copy{border-top:1px solid rgba(255,255,255,.12);font-size:.76rem;color:#8ea6c6;text-align:center;padding:1rem 18px}
+  footer.site{background:#0c1f44;color:#c3d2ec}
+  footer.site .wrap{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:1.4rem;padding-block:2.6rem}
+  @media (max-width:820px){footer.site .wrap{grid-template-columns:1fr 1fr}} @media (max-width:460px){footer.site .wrap{grid-template-columns:1fr}}
+  footer h5{color:#fff;font-size:.95rem;margin-bottom:.7rem;font-family:var(--f-display)}
+  footer a{display:block;color:#c3d2ec;text-decoration:none;font-size:.86rem;padding:.2rem 0;transition:.12s} footer a:hover{color:var(--saffron-2);transform:translateX(3px)}
+  .copy{border-top:1px solid rgba(255,255,255,.12);font-size:.76rem;color:#8ba2c8;text-align:center;padding:1.1rem 20px}
 </style>
 </head>
 <body>
 
-<div class="demo">Template modelled on PM Surya Ghar's layout &amp; workflow · generic placeholder branding — not an official government portal. Swap logo, names &amp; content for your own use.</div>
+<div class="demo">Premium template modelled on PM Surya Ghar's layout &amp; workflow · generic placeholder branding — not an official government portal. Swap logo, names &amp; content for your own use.</div>
 
-<!-- top bar -->
 <div class="topbar">
   <div class="wrap">
-    <div class="l">
-      <span class="flag" aria-hidden="true"><i class="s"></i><i class="w"></i><i class="g"></i></span>
-      <span>Government Portal <em style="opacity:.8">(demo template)</em></span>
-    </div>
-    <div class="socials" aria-label="Social links">
-      <a href="#" aria-label="Instagram">◎</a>
-      <a href="#" aria-label="Facebook">f</a>
-      <a href="#" aria-label="LinkedIn">in</a>
-      <a href="#" aria-label="X">✕</a>
-    </div>
+    <div class="l"><span class="flag" aria-hidden="true"><i class="s"></i><i class="w"></i><i class="g"></i></span><span>Government Portal <em style="opacity:.85">(demo template)</em></span></div>
+    <div class="socials" aria-label="Social links"><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">✕</a></div>
   </div>
 </div>
 
-<!-- header -->
 <header class="site">
   <div class="wrap">
     <div class="ministry">
-      <svg viewBox="0 0 40 52" fill="none" aria-hidden="true">
-        <circle cx="20" cy="12" r="9" fill="none" stroke="#7a8aa0" stroke-width="1.5"/>
-        <path d="M20 3v18M11 12h18M13 6l14 12M27 6L13 18" stroke="#7a8aa0" stroke-width="1.2"/>
-        <rect x="12" y="24" width="16" height="3" fill="#7a8aa0"/>
-        <path d="M14 29h12l-2 18h-8z" fill="#9aa8bd"/>
-      </svg>
+      <svg viewBox="0 0 40 52" fill="none" aria-hidden="true"><circle cx="20" cy="12" r="9" fill="none" stroke="#8a99b4" stroke-width="1.5"/><path d="M20 3v18M11 12h18M13 6l14 12M27 6L13 18" stroke="#8a99b4" stroke-width="1.2"/><rect x="12" y="24" width="16" height="3" fill="#8a99b4"/><path d="M14 29h12l-2 18h-8z" fill="#aab6cc"/></svg>
       <div class="mt">नवीन एवं नवीकरणीय<br><b>DEPT. OF<br>RENEWABLE ENERGY</b><br><span style="font-size:.9em">(demo placeholder)</span></div>
     </div>
     <a class="plogo" href="#top">
-      <svg class="burst" viewBox="0 0 52 52" aria-hidden="true">
-        <g>
-          <circle cx="26" cy="26" r="9" fill="#1763b0"/>
-          <path d="M26 26 L26 2 L32 8 Z" fill="var(--sun1)"/>
-          <path d="M26 26 L50 26 L44 20 Z" fill="var(--sun2)"/>
-          <path d="M26 26 L26 50 L20 44 Z" fill="var(--sun1)"/>
-          <path d="M26 26 L2 26 L8 32 Z" fill="var(--sun2)"/>
-          <path d="M26 26 L43 9 L44 17 Z" fill="var(--saffron)"/>
-          <path d="M26 26 L43 43 L35 44 Z" fill="var(--saffron)"/>
-          <path d="M26 26 L9 43 L8 35 Z" fill="var(--saffron)"/>
-          <path d="M26 26 L9 9 L17 8 Z" fill="var(--saffron)"/>
-          <circle cx="26" cy="26" r="5.5" fill="#fff"/><circle cx="26" cy="26" r="3.5" fill="#1763b0"/>
-        </g>
+      <svg class="burst" viewBox="0 0 54 54" aria-hidden="true">
+        <circle cx="27" cy="27" r="9" fill="#1a52c9"/>
+        <path d="M27 27 L27 2 L33 8 Z" fill="#ff6a1a"/><path d="M27 27 L52 27 L46 21 Z" fill="#ffb43d"/><path d="M27 27 L27 52 L21 46 Z" fill="#ff6a1a"/><path d="M27 27 L2 27 L8 33 Z" fill="#ffb43d"/>
+        <path d="M27 27 L45 9 L46 18 Z" fill="#ff8a12"/><path d="M27 27 L45 45 L36 46 Z" fill="#ff8a12"/><path d="M27 27 L9 45 L8 36 Z" fill="#ff8a12"/><path d="M27 27 L9 9 L18 8 Z" fill="#ff8a12"/>
+        <circle cx="27" cy="27" r="5.6" fill="#fff"/><circle cx="27" cy="27" r="3.6" fill="#1a52c9"/>
       </svg>
       <span><span class="pt1">Rooftop Solar Yojana:</span><br><span class="pt2">Muft Bijli Portal</span></span>
     </a>
@@ -237,37 +232,31 @@
       <div class="dd">
         <button class="btn btn-blue" id="loginBtn" aria-haspopup="true" aria-expanded="false">⇥ Login ▾</button>
         <div class="dd-menu" id="loginMenu" role="menu">
-          <a href="#login" role="menuitem">Administrator Login</a>
-          <a href="#login" role="menuitem">Consumer Login</a>
-          <a href="#login" role="menuitem">Discom Login</a>
-          <a href="#login" role="menuitem">Vendor Login</a>
-          <a href="#login" role="menuitem">Brand Owner Login</a>
-          <a href="#login" role="menuitem">Agency Login</a>
-          <a href="#login" role="menuitem">Government Building Login</a>
-          <a href="#login" role="menuitem">Implementation Agency (ULA)</a>
+          <a href="#login" role="menuitem"><span class="dot">⚙</span>Administrator Login</a>
+          <a href="#login" role="menuitem"><span class="dot">👤</span>Consumer Login</a>
+          <a href="#login" role="menuitem"><span class="dot">🏢</span>Discom Login</a>
+          <a href="#login" role="menuitem"><span class="dot">🪪</span>Vendor Login</a>
+          <a href="#login" role="menuitem"><span class="dot">🏷</span>Brand Owner Login</a>
+          <a href="#login" role="menuitem"><span class="dot">🏛</span>Agency Login</a>
+          <a href="#login" role="menuitem"><span class="dot">🏫</span>Government Building Login</a>
+          <a href="#login" role="menuitem"><span class="dot">📋</span>Implementation Agency (ULA)</a>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- nav -->
 <div class="navrow">
   <div class="wrap">
     <button class="navtoggle" id="navtoggle" aria-controls="navlinks" aria-expanded="false">☰ Menu</button>
     <div class="navlinks" id="navlinks">
       <div class="navitem"><a href="#top" class="active">🏠 Home</a></div>
       <div class="navitem"><a href="#process">📢 What's New</a></div>
-      <div class="navitem"><button data-sub="m1">👤 Consumer ▾</button>
-        <div class="submenu" id="m1"><a href="#getstarted">Register / Apply</a><a href="#login">Consumer Login</a><a href="#calc">Subsidy Calculator</a><a href="#process">Track Application</a></div></div>
-      <div class="navitem"><button data-sub="m2">🪪 Vendor ▾</button>
-        <div class="submenu" id="m2"><a href="#login">Vendor Login</a><a href="#vendors">Registered Vendors</a><a href="#">Vendor Registration</a></div></div>
-      <div class="navitem"><button data-sub="m3">🏢 Discom ▾</button>
-        <div class="submenu" id="m3"><a href="#login">Discom Login</a><a href="#">Feasibility Approvals</a><a href="#">Net Metering</a></div></div>
-      <div class="navitem"><button data-sub="m4">👁 Roof ▾</button>
-        <div class="submenu" id="m4"><a href="#benefits">Benefits</a><a href="#calc">Calculator</a><a href="#process">How to Apply</a></div></div>
-      <div class="navitem"><button data-sub="m5">📊 Reports ▾</button>
-        <div class="submenu" id="m5"><a href="#counters">State-wise Data</a><a href="#counters">Installations</a><a href="#counters">Subsidy Disbursed</a></div></div>
+      <div class="navitem"><button data-sub="m1">👤 Consumer ▾</button><div class="submenu" id="m1"><a href="#getstarted">Register / Apply</a><a href="#login">Consumer Login</a><a href="#calc">Subsidy Calculator</a><a href="#process">Track Application</a></div></div>
+      <div class="navitem"><button data-sub="m2">🪪 Vendor ▾</button><div class="submenu" id="m2"><a href="#login">Vendor Login</a><a href="#vendors">Registered Vendors</a><a href="#">Vendor Registration</a></div></div>
+      <div class="navitem"><button data-sub="m3">🏢 Discom ▾</button><div class="submenu" id="m3"><a href="#login">Discom Login</a><a href="#">Feasibility Approvals</a><a href="#">Net Metering</a></div></div>
+      <div class="navitem"><button data-sub="m4">👁 Roof ▾</button><div class="submenu" id="m4"><a href="#benefits">Benefits</a><a href="#calc">Calculator</a><a href="#process">How to Apply</a></div></div>
+      <div class="navitem"><button data-sub="m5">📊 Reports ▾</button><div class="submenu" id="m5"><a href="#counters">State-wise Data</a><a href="#counters">Installations</a><a href="#counters">Subsidy Disbursed</a></div></div>
       <div class="navitem"><a href="#">🏛 Capacity Building</a></div>
       <div class="navitem"><a href="#faq">⋮ More</a></div>
     </div>
@@ -275,56 +264,42 @@
 </div>
 
 <a id="top"></a>
-<!-- hero -->
 <section class="hero">
   <div class="mapbg" aria-hidden="true"></div>
+  <span class="glow g1" aria-hidden="true"></span><span class="glow g2" aria-hidden="true"></span>
   <div class="wrap">
     <div>
-      <h1>Rooftop Solar Yojana:<span class="b">Muft Bijli Yojana</span></h1>
+      <span class="tag">⚡ Rooftop Solar · Muft Bijli Yojana</span>
+      <h1>Apply for <span class="y">rooftop solar</span> &amp; get free electricity</h1>
       <blockquote>"In order to further sustainable development and people's well-being, this programme aims to light up 1 crore households by providing up to 300 units of free electricity every month." <em>(sample text — replace with your own)</em></blockquote>
-      <div class="attrib">
-        <div class="nm">[ Leader / Chairperson Name ]</div>
-        <div class="dz">[ Designation ]</div>
-        <div class="ph">↑ placeholder — add your own name &amp; photo</div>
-      </div>
+      <div class="attrib"><div class="nm">[ Leader / Chairperson Name ]</div><div class="dz">[ Designation ]</div><div class="ph">↑ placeholder — add your own name &amp; photo</div></div>
     </div>
-    <div class="figure">
-      <div class="silhouette" aria-label="Photo placeholder">
-        <svg width="70" height="80" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M3 23a9 9 0 0118 0z"/></svg>
-      </div>
-    </div>
+    <div class="figure"><div class="silhouette" aria-label="Photo placeholder"><svg width="72" height="82" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M3 23a9 9 0 0118 0z"/></svg></div></div>
   </div>
 </section>
 <div class="herocta">
   <div class="wrap">
     <span class="sub">⚡ Central subsidy up to <b>₹78,000</b> on residential rooftop solar</span>
-    <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-      <a href="#getstarted" class="btn btn-saffron">Apply for Rooftop Solar</a>
-      <a href="#login" class="btn btn-outline-w">Login</a>
-    </div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap"><a href="#getstarted" class="btn btn-sun">Apply for Rooftop Solar</a><a href="#login" class="btn btn-outline-w">Login</a></div>
   </div>
 </div>
 
-<!-- quick process -->
 <section class="sec" id="process">
   <div class="wrap">
-    <h2>Quick Process to Apply for Rooftop Solar</h2>
-    <p class="sub">The complete journey — from registration to subsidy in your bank account.</p>
+    <div class="lead2"><span class="eyebrow">The Process</span><h2>Quick Process to Apply for Rooftop Solar</h2><p class="sub">The complete journey — from registration to subsidy in your bank account.</p></div>
     <div class="rail">
-      <div class="pstep"><div class="pnum">1</div><h4>Register &amp; Apply</h4><p>Register with DISCOM, consumer number &amp; mobile; log in and submit the rooftop application.</p></div>
-      <div class="pstep"><div class="pnum">2</div><h4>Feasibility Approval</h4><p>Get DISCOM feasibility approval, then choose a registered vendor to install.</p></div>
-      <div class="pstep"><div class="pnum">3</div><h4>Install &amp; Net Meter</h4><p>Get the plant installed, submit details and apply for net metering.</p></div>
-      <div class="pstep"><div class="pnum">4</div><h4>Inspection &amp; Subsidy</h4><p>After inspection &amp; commissioning, submit bank details — subsidy via DBT in ~30 days.</p></div>
+      <div class="card lift pstep"><div class="pnum">1</div><h4>Register &amp; Apply</h4><p>Register with DISCOM, consumer number &amp; mobile; log in and submit the rooftop application.</p></div>
+      <div class="card lift pstep"><div class="pnum">2</div><h4>Feasibility Approval</h4><p>Get DISCOM feasibility approval, then choose a registered vendor to install.</p></div>
+      <div class="card lift pstep"><div class="pnum">3</div><h4>Install &amp; Net Meter</h4><p>Get the plant installed, submit details and apply for net metering.</p></div>
+      <div class="card lift pstep"><div class="pnum">4</div><h4>Inspection &amp; Subsidy</h4><p>After inspection &amp; commissioning, submit bank details — subsidy via DBT in ~30 days.</p></div>
     </div>
   </div>
 </section>
 
-<!-- register + login -->
 <section class="getstarted" id="getstarted">
   <div class="wrap sec">
-    <h2>Get Started</h2>
-    <p class="sub">Register to apply, or log in to your role-based dashboard.</p>
-    <div class="gs" style="margin-top:1.8rem">
+    <div class="lead2"><span class="eyebrow">Get Started</span><h2>Register to apply, or log in</h2><p class="sub">Role-based access for every stakeholder in the rooftop solar process.</p></div>
+    <div class="gs" style="margin-top:2rem">
       <form class="card qreg" id="apply" novalidate>
         <div class="ctitle">Register Here to Apply</div>
         <div class="cbody">
@@ -336,16 +311,12 @@
           <p class="msg" id="msg" hidden></p>
         </div>
       </form>
-
       <div class="card logincard" id="login">
         <div class="tabs" role="tablist">
-          <button class="tab active" data-tab="consumer">Consumer</button>
-          <button class="tab" data-tab="discom">DISCOM</button>
-          <button class="tab" data-tab="vendor">Vendor</button>
-          <button class="tab" data-tab="admin">Admin</button>
+          <button class="tab active" data-tab="consumer">Consumer</button><button class="tab" data-tab="discom">DISCOM</button><button class="tab" data-tab="vendor">Vendor</button><button class="tab" data-tab="admin">Admin</button>
         </div>
         <div class="cbody">
-          <h3 id="tabTitle" style="color:var(--blue)">Consumer Login</h3>
+          <h3 id="tabTitle" style="color:var(--blue);font-size:1.15rem">Consumer Login</h3>
           <div class="field"><label for="luser" id="luserLbl">Mobile Number / Registered ID</label><input id="luser" placeholder="Enter mobile / ID"></div>
           <div class="field"><label for="lpass">Password / OTP</label><input id="lpass" type="password" placeholder="Enter password or OTP"></div>
           <button class="btn btn-blue" type="button" onclick="return false">Login</button>
@@ -356,21 +327,18 @@
   </div>
 </section>
 
-<!-- benefits -->
 <section class="sec" id="benefits">
   <div class="wrap">
-    <h2>Benefits of Rooftop Solar</h2>
-    <p class="sub">Why lakhs of households are switching under the scheme.</p>
+    <div class="lead2"><span class="eyebrow">Why Rooftop Solar</span><h2>Benefits of going solar</h2><p class="sub">Why lakhs of households are switching under the scheme.</p></div>
     <div class="ben">
-      <div class="card b"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><h4>Free Electricity</h4><p>Generate your own power and cut bills to near zero.</p></div>
-      <div class="card b"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h4>Up to ₹78,000 Subsidy</h4><p>Central assistance credited straight to your bank.</p></div>
-      <div class="card b"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Verified Process</h4><p>Registered vendors &amp; DISCOM-checked workflow.</p></div>
-      <div class="card b"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0zM12 7v5l3 3"/></svg></div><h4>Quick Payback</h4><p>Recover cost in 4–5 years, save for decades.</p></div>
+      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><h4>Free Electricity</h4><p>Generate your own power and cut bills to near zero.</p></div>
+      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h4>Up to ₹78,000 Subsidy</h4><p>Central assistance credited straight to your bank.</p></div>
+      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Verified Process</h4><p>Registered vendors &amp; DISCOM-checked workflow.</p></div>
+      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0zM12 7v5l3 3"/></svg></div><h4>Quick Payback</h4><p>Recover cost in 4–5 years, save for decades.</p></div>
     </div>
   </div>
 </section>
 
-<!-- counters -->
 <div class="counters" id="counters">
   <div class="wrap">
     <div><div class="n">1.3 Cr+</div><div class="l">Registrations</div></div>
@@ -380,41 +348,35 @@
   </div>
 </div>
 
-<!-- calculator -->
 <section class="sec" id="calc">
   <div class="wrap">
-    <h2>Rooftop Solar Calculator</h2>
-    <p class="sub">Estimate your system size, cost and subsidy before you apply.</p>
+    <div class="lead2"><span class="eyebrow">Estimate</span><h2>Rooftop Solar Calculator</h2><p class="sub">Estimate your system size, cost and subsidy before you apply.</p></div>
     <div class="calc">
       <div class="card p">
-        <div class="field" style="margin-top:0"><label for="bill">Average monthly electricity bill</label>
-          <input id="bill" class="range" type="range" min="500" max="10000" step="250" value="2500">
-          <div class="kv"><span>Monthly bill</span><span class="v" id="billv">₹2,500</span></div></div>
-        <div class="field"><label for="size">Rooftop system size</label>
-          <input id="size" class="range" type="range" min="1" max="10" step="0.5" value="3">
-          <div class="kv"><span>System size</span><span class="v" id="sizev">3 kW</span></div></div>
+        <div class="field" style="margin-top:0"><label for="bill">Average monthly electricity bill</label><input id="bill" class="range" type="range" min="500" max="10000" step="250" value="2500"><div class="kv"><span>Monthly bill</span><span class="v" id="billv">₹2,500</span></div></div>
+        <div class="field"><label for="size">Rooftop system size</label><input id="size" class="range" type="range" min="1" max="10" step="0.5" value="3"><div class="kv"><span>System size</span><span class="v" id="sizev">3 kW</span></div></div>
         <div class="kv"><span>Roof area needed</span><span class="v" id="area">300 sq ft</span></div>
         <div class="kv"><span>Monthly generation</span><span class="v" id="gen">360 units</span></div>
         <div class="kv"><span>Approx. system cost</span><span class="v" id="cost">₹1,80,000</span></div>
       </div>
       <div class="result">
-        <span style="font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9">Your estimated subsidy</span>
+        <span style="font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9;position:relative">Your estimated subsidy</span>
         <div class="big" id="subsidy">₹78,000</div>
         <div class="cap" id="netcap">Net cost after subsidy ≈ ₹1,02,000 · payback ≈ 4–5 years</div>
-        <a href="#getstarted" class="btn btn-saffron" style="justify-content:center;margin-top:1rem">Apply with this estimate</a>
+        <a href="#getstarted" class="btn btn-sun" style="justify-content:center;margin-top:1rem;position:relative">Apply with this estimate</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- faq -->
-<section class="sec" id="faq" style="background:var(--surface-2);border-top:1px solid var(--line)">
-  <div class="wrap" style="max-width:820px">
-    <h2>Frequently Asked Questions</h2>
-    <div style="margin-top:1.6rem">
-      <details open><summary style="cursor:pointer;font-weight:700;color:var(--blue)">Who can apply for the rooftop solar subsidy?</summary><p style="color:var(--muted);font-size:.9rem;margin-top:.5rem">Any residential consumer with a valid electricity connection and suitable roof, subject to DISCOM feasibility approval.</p></details>
-      <details style="margin-top:.6rem"><summary style="cursor:pointer;font-weight:700;color:var(--blue)">How much subsidy will I get?</summary><p style="color:var(--muted);font-size:.9rem;margin-top:.5rem">₹30,000/kW for the first 2 kW and ₹18,000 for the 3rd kW — maximum ₹78,000 for a 3 kW or larger residential system.</p></details>
-      <details style="margin-top:.6rem"><summary style="cursor:pointer;font-weight:700;color:var(--blue)">How long does the process take?</summary><p style="color:var(--muted);font-size:.9rem;margin-top:.5rem">Typically 60–90 days end to end, including approval, installation, net metering and subsidy disbursal via DBT.</p></details>
+<section class="sec" id="faq" style="background:linear-gradient(180deg,#f1f5fc,#eaf0fb);border-top:1px solid var(--line)">
+  <div class="wrap" style="max-width:840px">
+    <div class="lead2"><span class="eyebrow">Help</span><h2>Frequently Asked Questions</h2></div>
+    <div style="margin-top:1.8rem">
+      <details open><summary>Who can apply for the rooftop solar subsidy?</summary><p>Any residential consumer with a valid electricity connection and suitable roof, subject to DISCOM feasibility approval.</p></details>
+      <details><summary>How much subsidy will I get?</summary><p>₹30,000/kW for the first 2 kW and ₹18,000 for the 3rd kW — maximum ₹78,000 for a 3 kW or larger residential system.</p></details>
+      <details><summary>How long does the process take?</summary><p>Typically 60–90 days end to end, including approval, installation, net metering and subsidy disbursal via DBT.</p></details>
+      <details><summary>What documents are required?</summary><p>Latest electricity bill, identity proof, bank passbook/cancelled cheque for DBT, and geo-tagged photos of the installation.</p></details>
     </div>
   </div>
 </section>
@@ -423,7 +385,7 @@
   <div class="wrap">
     <div>
       <h5>Rooftop Solar Yojana Portal</h5>
-      <p style="font-size:.85rem;max-width:34ch;color:#8ea6c6">Template modelled on the PM Surya Ghar design &amp; workflow. Replace branding, emblem and content for your own deployment.</p>
+      <p style="font-size:.85rem;max-width:34ch;color:#8ba2c8">Premium template modelled on the PM Surya Ghar design &amp; workflow. Replace branding, emblem and content for your own deployment.</p>
     </div>
     <div><h5>Consumer</h5><a href="#getstarted">Register</a><a href="#login">Login</a><a href="#calc">Calculator</a><a href="#process">How to apply</a></div>
     <div><h5>Stakeholders</h5><a href="#login">DISCOM</a><a href="#login">Vendor</a><a href="#login">Admin</a><a href="#vendors">Vendors</a></div>
@@ -435,24 +397,17 @@
 <script>
 (function(){
   "use strict";
-  // login dropdown
   var lb=document.getElementById('loginBtn'), lm=document.getElementById('loginMenu');
   lb.addEventListener('click',function(e){e.stopPropagation();var o=lm.classList.toggle('open');lb.setAttribute('aria-expanded',o?'true':'false');});
-  document.addEventListener('click',function(e){ if(!lm.contains(e.target)&&e.target!==lb){lm.classList.remove('open');lb.setAttribute('aria-expanded','false');} });
+  document.addEventListener('click',function(e){if(!lm.contains(e.target)&&e.target!==lb){lm.classList.remove('open');lb.setAttribute('aria-expanded','false');}});
 
-  // mobile nav + submenus
   var nt=document.getElementById('navtoggle'), nl=document.getElementById('navlinks');
   nt.addEventListener('click',function(){var o=nl.classList.toggle('open');nt.setAttribute('aria-expanded',o?'true':'false');});
   document.querySelectorAll('.navitem>button[data-sub]').forEach(function(b){
-    b.addEventListener('click',function(e){
-      if(window.matchMedia('(max-width:980px)').matches){
-        e.preventDefault(); document.getElementById(b.dataset.sub).classList.toggle('open');
-      }
-    });
+    b.addEventListener('click',function(e){if(window.matchMedia('(max-width:1040px)').matches){e.preventDefault();document.getElementById(b.dataset.sub).classList.toggle('open');}});
   });
-  nl.addEventListener('click',function(e){ if(e.target.tagName==='A'&&window.matchMedia('(max-width:980px)').matches){nl.classList.remove('open');nt.setAttribute('aria-expanded','false');} });
+  nl.addEventListener('click',function(e){if(e.target.tagName==='A'&&window.matchMedia('(max-width:1040px)').matches){nl.classList.remove('open');nt.setAttribute('aria-expanded','false');}});
 
-  // register demo
   var form=document.getElementById('apply'), msg=document.getElementById('msg');
   form.addEventListener('submit',function(e){e.preventDefault();
     var m=document.getElementById('mobile').value.replace(/\D/g,'');
@@ -461,26 +416,16 @@
     msg.hidden=false;msg.style.color='var(--green)';msg.textContent='✓ OTP would be sent to +91 '+m+' (demo — nothing is sent).';
   });
 
-  // login tabs
   var titles={consumer:['Consumer Login','Mobile Number / Registered ID'],discom:['DISCOM Login','DISCOM User ID'],vendor:['Vendor Login','Vendor ID / Email'],admin:['Administrator Login','Admin User ID']};
   document.querySelectorAll('.tab').forEach(function(b){
-    b.addEventListener('click',function(){
-      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
-      b.classList.add('active');var k=b.dataset.tab;
-      document.getElementById('tabTitle').textContent=titles[k][0];
-      document.getElementById('luserLbl').textContent=titles[k][1];
-    });
+    b.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});b.classList.add('active');var k=b.dataset.tab;document.getElementById('tabTitle').textContent=titles[k][0];document.getElementById('luserLbl').textContent=titles[k][1];});
   });
 
-  // calculator
   var bill=document.getElementById('bill'),size=document.getElementById('size');
   var billv=document.getElementById('billv'),sizev=document.getElementById('sizev'),area=document.getElementById('area'),gen=document.getElementById('gen'),cost=document.getElementById('cost'),subsidy=document.getElementById('subsidy'),netcap=document.getElementById('netcap');
   function inr(n){return '₹'+Math.round(n).toLocaleString('en-IN');}
   function subFor(kw){var s=Math.min(kw,2)*30000; if(kw>2)s+=Math.min(kw-2,1)*18000; return Math.min(s,78000);}
-  function calc(){var kw=parseFloat(size.value),b=parseInt(bill.value,10);
-    billv.textContent=inr(b);sizev.textContent=kw+' kW';area.textContent=Math.round(kw*100)+' sq ft';gen.textContent=Math.round(kw*120)+' units';
-    var sys=kw*60000;cost.textContent=inr(sys);var sub=subFor(kw);subsidy.textContent=inr(sub);
-    netcap.textContent='Net cost after subsidy ≈ '+inr(sys-sub)+' · payback ≈ 4–5 years';}
+  function calc(){var kw=parseFloat(size.value),b=parseInt(bill.value,10);billv.textContent=inr(b);sizev.textContent=kw+' kW';area.textContent=Math.round(kw*100)+' sq ft';gen.textContent=Math.round(kw*120)+' units';var sys=kw*60000;cost.textContent=inr(sys);var sub=subFor(kw);subsidy.textContent=inr(sub);netcap.textContent='Net cost after subsidy ≈ '+inr(sys-sub)+' · payback ≈ 4–5 years';}
   bill.addEventListener('input',calc);size.addEventListener('input',calc);calc();
 })();
 </script>
