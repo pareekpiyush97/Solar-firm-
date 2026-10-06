@@ -162,6 +162,25 @@
   .tabs button{border:none;background:transparent;color:var(--muted);font:inherit;font-weight:700;font-size:.82rem;padding:.6rem .3rem;cursor:pointer;border-radius:12px;transition:.15s}
   .tabs button.active{background:#fff;color:var(--blue);box-shadow:var(--shadow-xs)}
   .linkrow{text-align:center;font-size:.82rem;margin-top:.9rem;color:var(--muted)} .linkrow a{color:var(--blue);font-weight:700;text-decoration:none}
+  /* 3-option login chooser */
+  .chooser{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+  @media (max-width:820px){.chooser{grid-template-columns:1fr}}
+  .opt{display:flex;align-items:center;gap:1rem;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);padding:1.3rem;cursor:pointer;font:inherit;color:var(--ink);transition:transform .18s,box-shadow .2s}
+  .opt:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .opt .oic{width:52px;height:52px;border-radius:14px;background:var(--surface-2);display:grid;place-items:center;font-size:1.5rem;flex:none}
+  .opt .otxt{flex:1;display:flex;flex-direction:column}
+  .opt .otxt b{font-family:var(--f-display);font-size:1.05rem;color:var(--blue)}
+  .opt .otxt small{color:var(--muted);font-size:.82rem;margin-top:.15rem}
+  .opt .oarrow{color:var(--saffron);font-size:1.3rem;font-weight:800}
+  .panelwrap{margin-top:2rem;max-width:520px;margin-inline:auto}
+  .backbtn{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:10px;padding:.55rem .9rem;font:inherit;font-weight:700;color:var(--blue);cursor:pointer;margin-bottom:1rem}
+  .backbtn:hover{filter:brightness(.98)}
+  .cbody textarea{font:inherit;padding:.72rem .8rem;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);min-height:84px;resize:vertical;width:100%}
+  .alert{margin-top:.9rem;padding:.8rem 1rem;border-radius:11px;font-size:.88rem;font-weight:600}
+  .alert.ok{background:#ecfdf3;border:1px solid #bbf0cf;color:#0b6b3a}
+  .alert.bad{background:#fdecec;border:1px solid #f4c4c0;color:#9a2a22}
+  .alert.warn{background:#fff4ec;border:1px solid #f6c9a8;color:#9a4b12}
+  .hint{font-size:.76rem;color:var(--muted);margin-top:.8rem;background:var(--surface-2);border:1px dashed var(--line);border-radius:9px;padding:.5rem .7rem}
 
   /* benefits */
   .ben{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
@@ -246,14 +265,9 @@
       <div class="dd">
         <button class="btn btn-blue" id="loginBtn" aria-haspopup="true" aria-expanded="false">⇥ Login ▾</button>
         <div class="dd-menu" id="loginMenu" role="menu">
-          <a href="#login" role="menuitem"><span class="dot">⚙</span>Administrator Login</a>
-          <a href="#login" role="menuitem"><span class="dot">👤</span>Consumer Login</a>
-          <a href="#login" role="menuitem"><span class="dot">🏢</span>Discom Login</a>
-          <a href="#login" role="menuitem"><span class="dot">🪪</span>Vendor Login</a>
-          <a href="#login" role="menuitem"><span class="dot">🏷</span>Brand Owner Login</a>
-          <a href="#login" role="menuitem"><span class="dot">🏛</span>Agency Login</a>
-          <a href="#login" role="menuitem"><span class="dot">🏫</span>Government Building Login</a>
-          <a href="#login" role="menuitem"><span class="dot">📋</span>Implementation Agency (ULA)</a>
+          <a href="#getstarted" role="menuitem" data-open="vendor"><span class="dot">🪪</span>Vendor Login</a>
+          <a href="#getstarted" role="menuitem" data-open="employee"><span class="dot">👷</span>Employee Login</a>
+          <a href="#getstarted" role="menuitem" data-open="support"><span class="dot">💬</span>Customer Support</a>
         </div>
       </div>
     </div>
@@ -312,29 +326,59 @@
 
 <section class="getstarted" id="getstarted">
   <div class="wrap sec">
-    <div class="lead2"><span class="eyebrow">Get Started</span><h2>Register to apply, or log in</h2><p class="sub">Role-based access for every stakeholder in the rooftop solar process.</p></div>
-    <div class="gs" style="margin-top:2rem">
-      <form class="card qreg" id="apply" novalidate>
-        <div class="ctitle">Register Here to Apply</div>
+    <div class="lead2"><span class="eyebrow">Portal Access</span><h2 id="login">Login to your portal</h2><p class="sub">Choose an option below — only the panel you pick will open.</p></div>
+
+    <div class="chooser" id="chooser">
+      <button type="button" class="opt" data-panel="vendor">
+        <span class="oic">🪪</span>
+        <span class="otxt"><b>Vendor Login</b><small>Manage installations &amp; subsidy claims</small></span>
+        <span class="oarrow">→</span>
+      </button>
+      <button type="button" class="opt" data-panel="employee">
+        <span class="oic">👷</span>
+        <span class="otxt"><b>Employee Login</b><small>Update site progress &amp; photos</small></span>
+        <span class="oarrow">→</span>
+      </button>
+      <button type="button" class="opt" data-panel="support">
+        <span class="oic">💬</span>
+        <span class="otxt"><b>Customer Support</b><small>Register a complaint / get help</small></span>
+        <span class="oarrow">→</span>
+      </button>
+    </div>
+
+    <div class="panelwrap" id="panelwrap" hidden>
+      <button type="button" class="backbtn" id="backbtn">← Back to options</button>
+
+      <div class="card loginpanel" data-p="vendor" hidden>
+        <div class="ctitle">🪪 Vendor Login</div>
         <div class="cbody">
-          <div class="field"><label for="state">State</label><select id="state" required><option value="">Select State</option><option>Rajasthan</option><option>Gujarat</option><option>Maharashtra</option><option>Uttar Pradesh</option></select></div>
-          <div class="field"><label for="discom">DISCOM</label><select id="discom" required><option value="">Select DISCOM</option><option>Jaipur Vidyut Vitran Nigam</option><option>Ajmer Vidyut Vitran Nigam</option><option>Adani Electricity</option></select></div>
-          <div class="field"><label for="consumer">Consumer / Account Number</label><input id="consumer" inputmode="numeric" placeholder="Enter consumer number" required></div>
-          <div class="field"><label for="mobile">Mobile Number</label><input id="mobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" required></div>
-          <button class="btn btn-blue" type="submit">Next · Send OTP</button>
-          <p class="msg" id="msg" hidden></p>
+          <div class="field"><label for="vemail">Authorised email</label><input type="email" id="vemail" placeholder="name@vendor.in"></div>
+          <div class="field"><label for="vpass">Password</label><input type="password" id="vpass" placeholder="Enter password"></div>
+          <button class="btn btn-blue" type="button" data-login="vendor">Login</button>
+          <div class="alert" id="vmsg" hidden></div>
+          <p class="hint">Demo allowed emails: <b>vendor@sunpeak.in</b>, <b>contact@greenvolt.in</b> — other emails are denied.</p>
         </div>
-      </form>
-      <div class="card logincard" id="login">
-        <div class="tabs" role="tablist">
-          <button class="tab active" data-tab="consumer">Consumer</button><button class="tab" data-tab="discom">DISCOM</button><button class="tab" data-tab="vendor">Vendor</button><button class="tab" data-tab="admin">Admin</button>
-        </div>
+      </div>
+
+      <div class="card loginpanel" data-p="employee" hidden>
+        <div class="ctitle">👷 Employee Login</div>
         <div class="cbody">
-          <h3 id="tabTitle" style="color:var(--blue);font-size:1.15rem">Consumer Login</h3>
-          <div class="field"><label for="luser" id="luserLbl">Mobile Number / Registered ID</label><input id="luser" placeholder="Enter mobile / ID"></div>
-          <div class="field"><label for="lpass">Password / OTP</label><input id="lpass" type="password" placeholder="Enter password or OTP"></div>
-          <button class="btn btn-blue" type="button" onclick="return false">Login</button>
-          <div class="linkrow"><a href="#apply">New user? Register</a> · <a href="#">Forgot password?</a></div>
+          <div class="field"><label for="eemail">Authorised email</label><input type="email" id="eemail" placeholder="name@surajsolar.in"></div>
+          <div class="field"><label for="epass">Password</label><input type="password" id="epass" placeholder="Enter password"></div>
+          <button class="btn btn-blue" type="button" data-login="employee">Login</button>
+          <div class="alert" id="emsg" hidden></div>
+          <p class="hint">Demo allowed emails: <b>ramesh@surajsolar.in</b>, <b>suresh@surajsolar.in</b> — other emails are denied.</p>
+        </div>
+      </div>
+
+      <div class="card loginpanel" data-p="support" hidden>
+        <div class="ctitle">💬 Customer Support</div>
+        <div class="cbody">
+          <div class="field"><label for="sname">Your name</label><input id="sname" placeholder="Full name"></div>
+          <div class="field"><label for="sphone">Mobile number</label><input id="sphone" inputmode="numeric" maxlength="10" placeholder="10-digit mobile"></div>
+          <div class="field"><label for="sissue">How can we help?</label><textarea id="sissue" placeholder="Describe your issue…"></textarea></div>
+          <button class="btn btn-sun" type="button" data-login="support">Submit request</button>
+          <div class="alert" id="smsg" hidden></div>
         </div>
       </div>
     </div>
@@ -422,17 +466,45 @@
   });
   nl.addEventListener('click',function(e){if(e.target.tagName==='A'&&window.matchMedia('(max-width:1040px)').matches){nl.classList.remove('open');nt.setAttribute('aria-expanded','false');}});
 
-  var form=document.getElementById('apply'), msg=document.getElementById('msg');
-  form.addEventListener('submit',function(e){e.preventDefault();
-    var m=document.getElementById('mobile').value.replace(/\D/g,'');
-    if(!document.getElementById('state').value||!document.getElementById('discom').value||!document.getElementById('consumer').value||m.length!==10){
-      msg.hidden=false;msg.style.color='#b4401a';msg.textContent='Please fill all fields and a valid 10-digit mobile number.';return;}
-    msg.hidden=false;msg.style.color='var(--green)';msg.textContent='✓ OTP would be sent to +91 '+m+' (demo — nothing is sent).';
+  // ---- 3-option login chooser (only the picked panel opens) ----
+  var chooser=document.getElementById('chooser'), panelwrap=document.getElementById('panelwrap');
+  var panels=document.querySelectorAll('.loginpanel');
+  function openPanel(name){
+    chooser.hidden=true; panelwrap.hidden=false;
+    panels.forEach(function(p){p.hidden=(p.dataset.p!==name);});
+  }
+  function showChooser(){ panelwrap.hidden=true; chooser.hidden=false; }
+  document.querySelectorAll('.opt').forEach(function(b){ b.addEventListener('click',function(){openPanel(b.dataset.panel);}); });
+  document.getElementById('backbtn').addEventListener('click',showChooser);
+  // header Login dropdown → scroll to section and open the right panel
+  document.querySelectorAll('#loginMenu a[data-open]').forEach(function(a){
+    a.addEventListener('click',function(){ openPanel(a.dataset.open); document.getElementById('loginMenu').classList.remove('open'); setTimeout(function(){document.getElementById('getstarted').scrollIntoView({behavior:'smooth'});},40); });
   });
 
-  var titles={consumer:['Consumer Login','Mobile Number / Registered ID'],discom:['DISCOM Login','DISCOM User ID'],vendor:['Vendor Login','Vendor ID / Email'],admin:['Administrator Login','Admin User ID']};
-  document.querySelectorAll('.tab').forEach(function(b){
-    b.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});b.classList.add('active');var k=b.dataset.tab;document.getElementById('tabTitle').textContent=titles[k][0];document.getElementById('luserLbl').textContent=titles[k][1];});
+  // ---- login (email whitelist demo) + support request ----
+  var ALLOWED={ vendor:['vendor@sunpeak.in','contact@greenvolt.in'], employee:['ramesh@surajsolar.in','suresh@surajsolar.in'] };
+  function showAlert(el,kind,text){ el.hidden=false; el.className='alert '+kind; el.textContent=text; }
+  document.querySelectorAll('[data-login]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var role=btn.dataset.login;
+      if(role==='support'){
+        var nm=document.getElementById('sname').value.trim();
+        var ph=document.getElementById('sphone').value.replace(/\D/g,'');
+        var iss=document.getElementById('sissue').value.trim();
+        var sm=document.getElementById('smsg');
+        if(!nm||!iss||ph.length!==10){ showAlert(sm,'warn','Please fill name, a valid 10-digit mobile and your issue.'); return; }
+        var tid='SRV-2026-'+Math.floor(1000+Math.random()*9000);
+        showAlert(sm,'ok','✓ Request registered. Ticket '+tid+'. Our team will respond on +91 '+ph+' within 24h. (Demo)');
+        return;
+      }
+      var emailEl=document.getElementById(role==='vendor'?'vemail':'eemail');
+      var passEl=document.getElementById(role==='vendor'?'vpass':'epass');
+      var msgEl=document.getElementById(role==='vendor'?'vmsg':'emsg');
+      var email=emailEl.value.trim().toLowerCase(), pass=passEl.value;
+      if(!email||!pass){ showAlert(msgEl,'warn','Enter email and password.'); return; }
+      if(ALLOWED[role].indexOf(email)===-1){ showAlert(msgEl,'bad','✗ Access denied. '+email+' is not authorised for the '+role+' portal.'); return; }
+      showAlert(msgEl,'ok','✓ Access granted. Welcome, '+email+'. (Demo — real dashboard loads here.)');
+    });
   });
 
   var bill=document.getElementById('bill'),size=document.getElementById('size');
