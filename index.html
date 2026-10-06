@@ -201,6 +201,15 @@
   .aboutstats b{display:block;font-family:var(--f-display);font-size:1.5rem;color:var(--blue)}
   .aboutstats span{font-size:.78rem;color:var(--muted)}
   .aboutside{display:flex;flex-direction:column;gap:1rem}
+  /* feedback / reviews */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+  @media (max-width:820px){.reviews{grid-template-columns:1fr}}
+  .rev{padding:1.3rem;display:flex;flex-direction:column;gap:.7rem}
+  .rev .stars{color:var(--saffron);font-size:1rem;letter-spacing:1px}
+  .rev p{font-size:.94rem;color:var(--ink)}
+  .rev .who{display:flex;align-items:center;gap:.65rem;margin-top:auto}
+  .rev .av{width:40px;height:40px;border-radius:50%;background:var(--surface-2);color:var(--blue);display:grid;place-items:center;font-weight:800;font-family:var(--f-display)}
+  .rev .who b{font-size:.9rem} .rev .who span{display:block;font-size:.78rem;color:var(--muted)}
   /* login modal */
   .modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(10,20,40,.55);backdrop-filter:blur(4px);display:grid;place-items:center;padding:20px}
   .modal-overlay[hidden]{display:none}
@@ -291,8 +300,7 @@
       <span><span class="pt1">Rooftop Solar Yojana:</span><br><span class="pt2">Muft Bijli Portal</span></span>
     </a>
     <div class="hactions">
-      <a href="#vendors" class="btn btn-outline">✉ Contact Vendors</a>
-      <a href="#" class="btn btn-outline">✉ Grievance</a>
+      <a href="#feedback" class="btn btn-outline">⭐ Feedback</a>
       <button class="btn btn-blue" type="button" data-login-open>⇥ Login</button>
     </div>
   </div>
@@ -303,14 +311,10 @@
     <button class="navtoggle" id="navtoggle" aria-controls="navlinks" aria-expanded="false">☰ Menu</button>
     <div class="navlinks" id="navlinks">
       <div class="navitem"><a href="#top" class="active">🏠 Home</a></div>
-      <div class="navitem"><a href="#process">📢 What's New</a></div>
-      <div class="navitem"><button data-sub="m1">👤 Consumer ▾</button><div class="submenu" id="m1"><a href="#about">Register / Apply</a><a href="#" data-login-open>Consumer Login</a><a href="#about">Subsidy Calculator</a><a href="#process">Track Application</a></div></div>
-      <div class="navitem"><button data-sub="m2">🪪 Vendor ▾</button><div class="submenu" id="m2"><a href="#" data-login-open>Vendor Login</a><a href="#vendors">Registered Vendors</a><a href="#">Vendor Registration</a></div></div>
-      <div class="navitem"><button data-sub="m3">🏢 Discom ▾</button><div class="submenu" id="m3"><a href="#" data-login-open>Discom Login</a><a href="#">Feasibility Approvals</a><a href="#">Net Metering</a></div></div>
-      <div class="navitem"><button data-sub="m4">👁 Roof ▾</button><div class="submenu" id="m4"><a href="#benefits">Benefits</a><a href="#about">Calculator</a><a href="#process">How to Apply</a></div></div>
-      <div class="navitem"><button data-sub="m5">📊 Reports ▾</button><div class="submenu" id="m5"><a href="#counters">State-wise Data</a><a href="#counters">Installations</a><a href="#counters">Subsidy Disbursed</a></div></div>
-      <div class="navitem"><a href="#">🏛 Capacity Building</a></div>
-      <div class="navitem"><a href="#faq">⋮ More</a></div>
+      <div class="navitem"><a href="#about">🏢 About Us</a></div>
+      <div class="navitem"><a href="#who">👥 Who We Are</a></div>
+      <div class="navitem"><a href="#feedback">⭐ Feedback</a></div>
+      <div class="navitem"><a href="#" data-login-open="support">💬 Customer Support</a></div>
     </div>
   </div>
 </div>
@@ -392,6 +396,29 @@
   </div>
 </section>
 
+<section class="sec" id="who">
+  <div class="wrap">
+    <div class="lead2"><span class="eyebrow">Who We Are</span><h2>Why families choose us</h2><p class="sub">Honest advice, quality work, and service that lasts.</p></div>
+    <div class="ben">
+      <div class="card b"><div class="ic">🏡</div><h4>Trusted &amp; Local</h4><p>A family firm rooted in Rajasthan, serving our own community since 2009.</p></div>
+      <div class="card b"><div class="ic">🧰</div><h4>End-to-End</h4><p>Survey, subsidy, installation and service — all handled by one team.</p></div>
+      <div class="card b"><div class="ic">⭐</div><h4>Quality First</h4><p>Tier-1 panels and certified engineers, with clean, safe installation.</p></div>
+      <div class="card b"><div class="ic">🛡️</div><h4>Lifetime Support</h4><p>5-year service warranty plus annual cleaning &amp; performance checks.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="feedback">
+  <div class="wrap">
+    <div class="lead2"><span class="eyebrow">Feedback</span><h2>What our customers say</h2><p class="sub">Real homes, real savings across Rajasthan.</p></div>
+    <div class="reviews">
+      <div class="card rev"><div class="stars">★★★★★</div><p>"Bill ₹4,200 se ₹400 pe aa gaya. Puri subsidy ka kaam inhone khud kiya. Zero tension."</p><div class="who"><div class="av">RS</div><div><b>Rakesh Sharma</b><span>Jaipur · 3 kW</span></div></div></div>
+      <div class="card rev"><div class="stars">★★★★★</div><p>"Installation team was neat and professional. They explained every step and cleaned up after."</p><div class="who"><div class="av">PA</div><div><b>Priya Agarwal</b><span>Ajmer · 5 kW</span></div></div></div>
+      <div class="card rev"><div class="stars">★★★★☆</div><p>"Great service and fair pricing. Net-metering took time but they kept me updated."</p><div class="who"><div class="av">MK</div><div><b>Mohan Kumar</b><span>Kota · 4 kW</span></div></div></div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="faq" style="background:transparent;border-top:1px solid rgba(255,255,255,.25)">
   <div class="wrap" style="max-width:840px">
     <div class="lead2"><span class="eyebrow">Help</span><h2>Frequently Asked Questions</h2></div>
@@ -412,7 +439,7 @@
     </div>
     <div><h5>Consumer</h5><a href="#about">Register</a><a href="#" data-login-open>Login</a><a href="#about">Calculator</a><a href="#process">How to apply</a></div>
     <div><h5>Stakeholders</h5><a href="#" data-login-open>DISCOM</a><a href="#" data-login-open>Vendor</a><a href="#" data-login-open>Admin</a><a href="#vendors">Vendors</a></div>
-    <div><h5>Support</h5><a href="#faq">FAQ</a><a href="#">Grievance</a><a href="#">Contact</a><a href="#">Accessibility</a></div>
+    <div><h5>Support</h5><a href="#faq">FAQ</a><a href="#" data-login-open="support">Customer Support</a><a href="#about">Contact</a><a href="#feedback">Feedback</a></div>
   </div>
   <div class="copy">© 2026 Rooftop Solar Yojana Portal (demo template). Design &amp; workflow reference only — not affiliated with any government body.</div>
 </footer>
