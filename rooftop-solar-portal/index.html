@@ -27,6 +27,12 @@
   }
   *{box-sizing:border-box}
   body{background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.55;-webkit-font-smoothing:antialiased}
+  /* full-page video background replacing the plain light background */
+  .bgvideo{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none}
+  .bgveil{position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(238,243,251,.80),rgba(238,243,251,.70))}
+  html{background:#0c1f44}
+  body{background:transparent !important}
+  .sec{position:relative}
   h1,h2,h3,h4{margin:0;line-height:1.14;text-wrap:balance;font-family:var(--f-display)}
   p{margin:0} a{color:inherit}
   .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
@@ -138,7 +144,7 @@
   .pstep p{font-size:.84rem;color:var(--muted);margin-top:.4rem}
 
   /* get started */
-  .getstarted{background:linear-gradient(180deg,#f1f5fc,#eaf0fb);border-block:1px solid var(--line)}
+  .getstarted{background:rgba(241,245,252,.55);backdrop-filter:blur(2px);border-block:1px solid var(--line)}
   .gs{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start}
   @media (max-width:880px){.gs{grid-template-columns:1fr}}
   .ctitle{background:var(--grad-blue);color:#fff;padding:1rem 1.3rem;font-weight:800;font-family:var(--f-display);border-radius:var(--r-lg) var(--r-lg) 0 0}
@@ -201,6 +207,11 @@
 </style>
 </head>
 <body>
+
+<video class="bgvideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+  <source src="bg.mp4" type="video/mp4">
+</video>
+<div class="bgveil" aria-hidden="true"></div>
 
 <div class="demo">Premium template modelled on PM Surya Ghar's layout &amp; workflow · generic placeholder branding — not an official government portal. Swap logo, names &amp; content for your own use.</div>
 
@@ -369,7 +380,7 @@
   </div>
 </section>
 
-<section class="sec" id="faq" style="background:linear-gradient(180deg,#f1f5fc,#eaf0fb);border-top:1px solid var(--line)">
+<section class="sec" id="faq" style="background:rgba(241,245,252,.55);backdrop-filter:blur(2px);border-top:1px solid var(--line)">
   <div class="wrap" style="max-width:840px">
     <div class="lead2"><span class="eyebrow">Help</span><h2>Frequently Asked Questions</h2></div>
     <div style="margin-top:1.8rem">
