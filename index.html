@@ -29,7 +29,7 @@
   body{background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.55;-webkit-font-smoothing:antialiased}
   /* full-page video background replacing the plain light background */
   .bgvideo{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none}
-  .bgveil{position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(238,243,251,.80),rgba(238,243,251,.70))}
+  .bgveil{position:fixed;inset:0;z-index:-1;pointer-events:none;background:transparent}
   html{background:#0c1f44}
   body{background:transparent !important}
   .sec{position:relative}
@@ -133,8 +133,8 @@
   .sec{padding-block:clamp(2.6rem,5.5vw,4rem)}
   .sec .lead2{text-align:center;max-width:62ch;margin-inline:auto}
   .sec .eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;background:var(--grad-sun);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sec h2{color:var(--ink);font-size:clamp(1.5rem,3.2vw,2.2rem);margin-top:.5rem}
-  .sec .sub{color:var(--muted);margin-top:.5rem}
+  .sec h2{color:var(--ink);font-size:clamp(1.5rem,3.2vw,2.2rem);margin-top:.5rem;text-shadow:0 1px 14px rgba(255,255,255,.9),0 1px 3px rgba(255,255,255,.95)}
+  .sec .sub{color:var(--ink);margin-top:.5rem;font-weight:600;text-shadow:0 1px 10px rgba(255,255,255,.95)}
 
   /* process rail */
   .rail{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.2rem}
@@ -147,7 +147,7 @@
   .pstep p{font-size:.84rem;color:var(--muted);margin-top:.4rem}
 
   /* get started */
-  .getstarted{background:rgba(241,245,252,.55);backdrop-filter:blur(2px);border-block:1px solid var(--line)}
+  .getstarted{background:transparent;border-block:1px solid rgba(255,255,255,.25)}
   .gs{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start}
   @media (max-width:880px){.gs{grid-template-columns:1fr}}
   .ctitle{background:var(--grad-blue);color:#fff;padding:1rem 1.3rem;font-weight:800;font-family:var(--f-display);border-radius:var(--r-lg) var(--r-lg) 0 0}
@@ -383,7 +383,7 @@
   </div>
 </section>
 
-<section class="sec" id="faq" style="background:rgba(241,245,252,.55);backdrop-filter:blur(2px);border-top:1px solid var(--line)">
+<section class="sec" id="faq" style="background:transparent;border-top:1px solid rgba(255,255,255,.25)">
   <div class="wrap" style="max-width:840px">
     <div class="lead2"><span class="eyebrow">Help</span><h2>Frequently Asked Questions</h2></div>
     <div style="margin-top:1.8rem">
