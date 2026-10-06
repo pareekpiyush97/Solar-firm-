@@ -6,8 +6,11 @@ layout and workflow of India's PM Surya Ghar portal. Built as a design reference
 
 ## Live preview
 
-Open `rooftop-solar-portal/index.html` in a browser, or enable GitHub Pages and serve
-from `/rooftop-solar-portal`.
+Open `index.html` in a browser. With GitHub Pages enabled (deploy from this branch,
+root folder), the portal is served at the site root:
+`https://pareekpiyush97.github.io/Solar-firm-/`
+
+A looping video background (`bg.mp4`) sits behind the page under a soft light veil.
 
 ## Features
 
@@ -29,7 +32,7 @@ from `/rooftop-solar-portal`.
 ## Tech
 
 - Plain **HTML + CSS + vanilla JavaScript** — no build step, no dependencies
-- Everything is in one file: `rooftop-solar-portal/index.html`
+- The page is a single file: `index.html` (plus `bg.mp4` for the background)
 
 ## Customise it
 
