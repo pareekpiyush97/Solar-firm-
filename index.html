@@ -181,6 +181,27 @@
   .alert.bad{background:#fdecec;border:1px solid #f4c4c0;color:#9a2a22}
   .alert.warn{background:#fff4ec;border:1px solid #f6c9a8;color:#9a4b12}
   .hint{font-size:.76rem;color:var(--muted);margin-top:.8rem;background:var(--surface-2);border:1px dashed var(--line);border-radius:9px;padding:.5rem .7rem}
+  /* firm details */
+  .firmgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+  @media (max-width:900px){.firmgrid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.firmgrid{grid-template-columns:1fr}}
+  .firmcard{padding:1.4rem}
+  .firmcard .fic{width:52px;height:52px;border-radius:14px;background:var(--surface-2);display:grid;place-items:center;font-size:1.5rem;margin-bottom:.8rem}
+  .firmcard h4{font-family:var(--f-display);font-size:1.05rem;color:var(--blue)}
+  .firmcard p{color:var(--muted);font-size:.88rem;margin-top:.4rem;line-height:1.7}
+  .firmcard ul{margin:.5rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.88rem}
+  .firmcard li{margin:.25rem 0}
+  /* login modal */
+  .modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(10,20,40,.55);backdrop-filter:blur(4px);display:grid;place-items:center;padding:20px}
+  .modal-overlay[hidden]{display:none}
+  .modal{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow);width:100%;max-width:520px;max-height:90vh;overflow:auto;padding:1.6rem;position:relative;animation:pop .16s ease}
+  .modal-close{position:absolute;right:.9rem;top:.9rem;width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;font-size:1.25rem;line-height:1;cursor:pointer;color:var(--muted)}
+  .modal-close:hover{background:var(--surface-2)}
+  .modal-head{text-align:center;margin-bottom:1.2rem}
+  .modal-head h3{font-family:var(--f-display);color:var(--ink);font-size:1.4rem;margin-top:.3rem}
+  .modal-head p{color:var(--muted);font-size:.86rem;margin-top:.3rem}
+  .modal .chooser{grid-template-columns:1fr;gap:.7rem;margin-top:0}
+  .modal .panelwrap{margin-top:0;max-width:none}
 
   /* benefits */
   .ben{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
@@ -262,14 +283,7 @@
     <div class="hactions">
       <a href="#vendors" class="btn btn-outline">✉ Contact Vendors</a>
       <a href="#" class="btn btn-outline">✉ Grievance</a>
-      <div class="dd">
-        <button class="btn btn-blue" id="loginBtn" aria-haspopup="true" aria-expanded="false">⇥ Login ▾</button>
-        <div class="dd-menu" id="loginMenu" role="menu">
-          <a href="#getstarted" role="menuitem" data-open="vendor"><span class="dot">🪪</span>Vendor Login</a>
-          <a href="#getstarted" role="menuitem" data-open="employee"><span class="dot">👷</span>Employee Login</a>
-          <a href="#getstarted" role="menuitem" data-open="support"><span class="dot">💬</span>Customer Support</a>
-        </div>
-      </div>
+      <button class="btn btn-blue" type="button" data-login-open>⇥ Login</button>
     </div>
   </div>
 </header>
@@ -280,9 +294,9 @@
     <div class="navlinks" id="navlinks">
       <div class="navitem"><a href="#top" class="active">🏠 Home</a></div>
       <div class="navitem"><a href="#process">📢 What's New</a></div>
-      <div class="navitem"><button data-sub="m1">👤 Consumer ▾</button><div class="submenu" id="m1"><a href="#getstarted">Register / Apply</a><a href="#login">Consumer Login</a><a href="#calc">Subsidy Calculator</a><a href="#process">Track Application</a></div></div>
-      <div class="navitem"><button data-sub="m2">🪪 Vendor ▾</button><div class="submenu" id="m2"><a href="#login">Vendor Login</a><a href="#vendors">Registered Vendors</a><a href="#">Vendor Registration</a></div></div>
-      <div class="navitem"><button data-sub="m3">🏢 Discom ▾</button><div class="submenu" id="m3"><a href="#login">Discom Login</a><a href="#">Feasibility Approvals</a><a href="#">Net Metering</a></div></div>
+      <div class="navitem"><button data-sub="m1">👤 Consumer ▾</button><div class="submenu" id="m1"><a href="#about">Register / Apply</a><a href="#" data-login-open>Consumer Login</a><a href="#calc">Subsidy Calculator</a><a href="#process">Track Application</a></div></div>
+      <div class="navitem"><button data-sub="m2">🪪 Vendor ▾</button><div class="submenu" id="m2"><a href="#" data-login-open>Vendor Login</a><a href="#vendors">Registered Vendors</a><a href="#">Vendor Registration</a></div></div>
+      <div class="navitem"><button data-sub="m3">🏢 Discom ▾</button><div class="submenu" id="m3"><a href="#" data-login-open>Discom Login</a><a href="#">Feasibility Approvals</a><a href="#">Net Metering</a></div></div>
       <div class="navitem"><button data-sub="m4">👁 Roof ▾</button><div class="submenu" id="m4"><a href="#benefits">Benefits</a><a href="#calc">Calculator</a><a href="#process">How to Apply</a></div></div>
       <div class="navitem"><button data-sub="m5">📊 Reports ▾</button><div class="submenu" id="m5"><a href="#counters">State-wise Data</a><a href="#counters">Installations</a><a href="#counters">Subsidy Disbursed</a></div></div>
       <div class="navitem"><a href="#">🏛 Capacity Building</a></div>
@@ -308,7 +322,7 @@
 <div class="herocta">
   <div class="wrap">
     <span class="sub">⚡ Central subsidy up to <b>₹78,000</b> on residential rooftop solar</span>
-    <div style="display:flex;gap:.6rem;flex-wrap:wrap"><a href="#getstarted" class="btn btn-sun">Apply for Rooftop Solar</a><a href="#login" class="btn btn-outline-w">Login</a></div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap"><a href="#about" class="btn btn-sun">Apply for Rooftop Solar</a><a href="#" data-login-open class="btn btn-outline-w">Login</a></div>
   </div>
 </div>
 
@@ -324,9 +338,106 @@
   </div>
 </section>
 
-<section class="getstarted" id="getstarted">
-  <div class="wrap sec">
-    <div class="lead2"><span class="eyebrow">Portal Access</span><h2 id="login">Login to your portal</h2><p class="sub">Choose an option below — only the panel you pick will open.</p></div>
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="lead2"><span class="eyebrow">About Us</span><h2>Firm Details</h2><p class="sub">Your company information — placeholder content you can edit for your own firm.</p></div>
+    <div class="firmgrid">
+      <div class="card firmcard">
+        <div class="fic">🏢</div>
+        <h4>SurajSolar Energy</h4>
+        <p>A family-run rooftop solar firm established in 2009, helping homes and businesses switch to clean, affordable power across Rajasthan.</p>
+      </div>
+      <div class="card firmcard">
+        <div class="fic">🔧</div>
+        <h4>What We Do</h4>
+        <ul><li>Rooftop solar installation</li><li>Subsidy &amp; DISCOM paperwork</li><li>Net-metering &amp; commissioning</li><li>Annual service &amp; maintenance</li></ul>
+      </div>
+      <div class="card firmcard">
+        <div class="fic">📞</div>
+        <h4>Contact</h4>
+        <p>📍 Jaipur, Rajasthan<br>☎ 1800-SOLAR (demo)<br>✉ info@surajsolar.demo<br>🕑 Mon–Sat, 9am–7pm</p>
+      </div>
+      <div class="card firmcard">
+        <div class="fic">✅</div>
+        <h4>Credentials</h4>
+        <p>GST: [ your GST no ]<br>Reg. No.: [ your reg no ]<br>Empanelled installer (demo)<br>15+ years · 1,200+ installations</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="benefits">
+  <div class="wrap">
+    <div class="lead2"><span class="eyebrow">Why Rooftop Solar</span><h2>Benefits of going solar</h2><p class="sub">Why lakhs of households are switching under the scheme.</p></div>
+    <div class="ben">
+      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><h4>Free Electricity</h4><p>Generate your own power and cut bills to near zero.</p></div>
+      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h4>Up to ₹78,000 Subsidy</h4><p>Central assistance credited straight to your bank.</p></div>
+      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Verified Process</h4><p>Registered vendors &amp; DISCOM-checked workflow.</p></div>
+      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0zM12 7v5l3 3"/></svg></div><h4>Quick Payback</h4><p>Recover cost in 4–5 years, save for decades.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="counters" id="counters">
+  <div class="wrap">
+    <div><div class="n">1.3 Cr+</div><div class="l">Registrations</div></div>
+    <div><div class="n">9.8 Lakh</div><div class="l">Installations</div></div>
+    <div><div class="n">4,200 MW</div><div class="l">Capacity added</div></div>
+    <div><div class="n">₹6,800 Cr</div><div class="l">Subsidy disbursed</div></div>
+  </div>
+</div>
+
+<section class="sec" id="calc">
+  <div class="wrap">
+    <div class="lead2"><span class="eyebrow">Estimate</span><h2>Rooftop Solar Calculator</h2><p class="sub">Estimate your system size, cost and subsidy before you apply.</p></div>
+    <div class="calc">
+      <div class="card p">
+        <div class="field" style="margin-top:0"><label for="bill">Average monthly electricity bill</label><input id="bill" class="range" type="range" min="500" max="10000" step="250" value="2500"><div class="kv"><span>Monthly bill</span><span class="v" id="billv">₹2,500</span></div></div>
+        <div class="field"><label for="size">Rooftop system size</label><input id="size" class="range" type="range" min="1" max="10" step="0.5" value="3"><div class="kv"><span>System size</span><span class="v" id="sizev">3 kW</span></div></div>
+        <div class="kv"><span>Roof area needed</span><span class="v" id="area">300 sq ft</span></div>
+        <div class="kv"><span>Monthly generation</span><span class="v" id="gen">360 units</span></div>
+        <div class="kv"><span>Approx. system cost</span><span class="v" id="cost">₹1,80,000</span></div>
+      </div>
+      <div class="result">
+        <span style="font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9;position:relative">Your estimated subsidy</span>
+        <div class="big" id="subsidy">₹78,000</div>
+        <div class="cap" id="netcap">Net cost after subsidy ≈ ₹1,02,000 · payback ≈ 4–5 years</div>
+        <a href="#about" class="btn btn-sun" style="justify-content:center;margin-top:1rem;position:relative">Apply with this estimate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" style="background:transparent;border-top:1px solid rgba(255,255,255,.25)">
+  <div class="wrap" style="max-width:840px">
+    <div class="lead2"><span class="eyebrow">Help</span><h2>Frequently Asked Questions</h2></div>
+    <div style="margin-top:1.8rem">
+      <details open><summary>Who can apply for the rooftop solar subsidy?</summary><p>Any residential consumer with a valid electricity connection and suitable roof, subject to DISCOM feasibility approval.</p></details>
+      <details><summary>How much subsidy will I get?</summary><p>₹30,000/kW for the first 2 kW and ₹18,000 for the 3rd kW — maximum ₹78,000 for a 3 kW or larger residential system.</p></details>
+      <details><summary>How long does the process take?</summary><p>Typically 60–90 days end to end, including approval, installation, net metering and subsidy disbursal via DBT.</p></details>
+      <details><summary>What documents are required?</summary><p>Latest electricity bill, identity proof, bank passbook/cancelled cheque for DBT, and geo-tagged photos of the installation.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <h5>Rooftop Solar Yojana Portal</h5>
+      <p style="font-size:.85rem;max-width:34ch;color:#8ba2c8">Premium template modelled on the PM Surya Ghar design &amp; workflow. Replace branding, emblem and content for your own deployment.</p>
+    </div>
+    <div><h5>Consumer</h5><a href="#about">Register</a><a href="#" data-login-open>Login</a><a href="#calc">Calculator</a><a href="#process">How to apply</a></div>
+    <div><h5>Stakeholders</h5><a href="#" data-login-open>DISCOM</a><a href="#" data-login-open>Vendor</a><a href="#" data-login-open>Admin</a><a href="#vendors">Vendors</a></div>
+    <div><h5>Support</h5><a href="#faq">FAQ</a><a href="#">Grievance</a><a href="#">Contact</a><a href="#">Accessibility</a></div>
+  </div>
+  <div class="copy">© 2026 Rooftop Solar Yojana Portal (demo template). Design &amp; workflow reference only — not affiliated with any government body.</div>
+</footer>
+
+<!-- login modal (opens only when a Login trigger is clicked) -->
+<div class="modal-overlay" id="loginModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Login">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+    <div class="modal-head"><span class="eyebrow">Portal Access</span><h3>Login to your portal</h3><p>Choose an option — only the one you pick opens.</p></div>
 
     <div class="chooser" id="chooser">
       <button type="button" class="opt" data-panel="vendor">
@@ -383,82 +494,11 @@
       </div>
     </div>
   </div>
-</section>
-
-<section class="sec" id="benefits">
-  <div class="wrap">
-    <div class="lead2"><span class="eyebrow">Why Rooftop Solar</span><h2>Benefits of going solar</h2><p class="sub">Why lakhs of households are switching under the scheme.</p></div>
-    <div class="ben">
-      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><h4>Free Electricity</h4><p>Generate your own power and cut bills to near zero.</p></div>
-      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h4>Up to ₹78,000 Subsidy</h4><p>Central assistance credited straight to your bank.</p></div>
-      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Verified Process</h4><p>Registered vendors &amp; DISCOM-checked workflow.</p></div>
-      <div class="card lift b"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0zM12 7v5l3 3"/></svg></div><h4>Quick Payback</h4><p>Recover cost in 4–5 years, save for decades.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="counters" id="counters">
-  <div class="wrap">
-    <div><div class="n">1.3 Cr+</div><div class="l">Registrations</div></div>
-    <div><div class="n">9.8 Lakh</div><div class="l">Installations</div></div>
-    <div><div class="n">4,200 MW</div><div class="l">Capacity added</div></div>
-    <div><div class="n">₹6,800 Cr</div><div class="l">Subsidy disbursed</div></div>
-  </div>
 </div>
-
-<section class="sec" id="calc">
-  <div class="wrap">
-    <div class="lead2"><span class="eyebrow">Estimate</span><h2>Rooftop Solar Calculator</h2><p class="sub">Estimate your system size, cost and subsidy before you apply.</p></div>
-    <div class="calc">
-      <div class="card p">
-        <div class="field" style="margin-top:0"><label for="bill">Average monthly electricity bill</label><input id="bill" class="range" type="range" min="500" max="10000" step="250" value="2500"><div class="kv"><span>Monthly bill</span><span class="v" id="billv">₹2,500</span></div></div>
-        <div class="field"><label for="size">Rooftop system size</label><input id="size" class="range" type="range" min="1" max="10" step="0.5" value="3"><div class="kv"><span>System size</span><span class="v" id="sizev">3 kW</span></div></div>
-        <div class="kv"><span>Roof area needed</span><span class="v" id="area">300 sq ft</span></div>
-        <div class="kv"><span>Monthly generation</span><span class="v" id="gen">360 units</span></div>
-        <div class="kv"><span>Approx. system cost</span><span class="v" id="cost">₹1,80,000</span></div>
-      </div>
-      <div class="result">
-        <span style="font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9;position:relative">Your estimated subsidy</span>
-        <div class="big" id="subsidy">₹78,000</div>
-        <div class="cap" id="netcap">Net cost after subsidy ≈ ₹1,02,000 · payback ≈ 4–5 years</div>
-        <a href="#getstarted" class="btn btn-sun" style="justify-content:center;margin-top:1rem;position:relative">Apply with this estimate</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="faq" style="background:transparent;border-top:1px solid rgba(255,255,255,.25)">
-  <div class="wrap" style="max-width:840px">
-    <div class="lead2"><span class="eyebrow">Help</span><h2>Frequently Asked Questions</h2></div>
-    <div style="margin-top:1.8rem">
-      <details open><summary>Who can apply for the rooftop solar subsidy?</summary><p>Any residential consumer with a valid electricity connection and suitable roof, subject to DISCOM feasibility approval.</p></details>
-      <details><summary>How much subsidy will I get?</summary><p>₹30,000/kW for the first 2 kW and ₹18,000 for the 3rd kW — maximum ₹78,000 for a 3 kW or larger residential system.</p></details>
-      <details><summary>How long does the process take?</summary><p>Typically 60–90 days end to end, including approval, installation, net metering and subsidy disbursal via DBT.</p></details>
-      <details><summary>What documents are required?</summary><p>Latest electricity bill, identity proof, bank passbook/cancelled cheque for DBT, and geo-tagged photos of the installation.</p></details>
-    </div>
-  </div>
-</section>
-
-<footer class="site">
-  <div class="wrap">
-    <div>
-      <h5>Rooftop Solar Yojana Portal</h5>
-      <p style="font-size:.85rem;max-width:34ch;color:#8ba2c8">Premium template modelled on the PM Surya Ghar design &amp; workflow. Replace branding, emblem and content for your own deployment.</p>
-    </div>
-    <div><h5>Consumer</h5><a href="#getstarted">Register</a><a href="#login">Login</a><a href="#calc">Calculator</a><a href="#process">How to apply</a></div>
-    <div><h5>Stakeholders</h5><a href="#login">DISCOM</a><a href="#login">Vendor</a><a href="#login">Admin</a><a href="#vendors">Vendors</a></div>
-    <div><h5>Support</h5><a href="#faq">FAQ</a><a href="#">Grievance</a><a href="#">Contact</a><a href="#">Accessibility</a></div>
-  </div>
-  <div class="copy">© 2026 Rooftop Solar Yojana Portal (demo template). Design &amp; workflow reference only — not affiliated with any government body.</div>
-</footer>
 
 <script>
 (function(){
   "use strict";
-  var lb=document.getElementById('loginBtn'), lm=document.getElementById('loginMenu');
-  lb.addEventListener('click',function(e){e.stopPropagation();var o=lm.classList.toggle('open');lb.setAttribute('aria-expanded',o?'true':'false');});
-  document.addEventListener('click',function(e){if(!lm.contains(e.target)&&e.target!==lb){lm.classList.remove('open');lb.setAttribute('aria-expanded','false');}});
-
   var nt=document.getElementById('navtoggle'), nl=document.getElementById('navlinks');
   nt.addEventListener('click',function(){var o=nl.classList.toggle('open');nt.setAttribute('aria-expanded',o?'true':'false');});
   document.querySelectorAll('.navitem>button[data-sub]').forEach(function(b){
@@ -466,20 +506,22 @@
   });
   nl.addEventListener('click',function(e){if(e.target.tagName==='A'&&window.matchMedia('(max-width:1040px)').matches){nl.classList.remove('open');nt.setAttribute('aria-expanded','false');}});
 
-  // ---- 3-option login chooser (only the picked panel opens) ----
+  // ---- login modal: opens ONLY when a Login trigger is clicked ----
+  var modal=document.getElementById('loginModal');
   var chooser=document.getElementById('chooser'), panelwrap=document.getElementById('panelwrap');
   var panels=document.querySelectorAll('.loginpanel');
-  function openPanel(name){
-    chooser.hidden=true; panelwrap.hidden=false;
-    panels.forEach(function(p){p.hidden=(p.dataset.p!==name);});
-  }
   function showChooser(){ panelwrap.hidden=true; chooser.hidden=false; }
+  function openPanel(name){ chooser.hidden=true; panelwrap.hidden=false; panels.forEach(function(p){p.hidden=(p.dataset.p!==name);}); }
+  function openModal(panel){ showChooser(); if(panel) openPanel(panel); modal.hidden=false; document.body.style.overflow='hidden'; }
+  function closeModal(){ modal.hidden=true; document.body.style.overflow=''; }
+  document.querySelectorAll('[data-login-open]').forEach(function(el){
+    el.addEventListener('click',function(e){ e.preventDefault(); openModal(el.getAttribute('data-login-open')||null); });
+  });
+  document.getElementById('modalClose').addEventListener('click',closeModal);
+  modal.addEventListener('click',function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!modal.hidden) closeModal(); });
   document.querySelectorAll('.opt').forEach(function(b){ b.addEventListener('click',function(){openPanel(b.dataset.panel);}); });
   document.getElementById('backbtn').addEventListener('click',showChooser);
-  // header Login dropdown → scroll to section and open the right panel
-  document.querySelectorAll('#loginMenu a[data-open]').forEach(function(a){
-    a.addEventListener('click',function(){ openPanel(a.dataset.open); document.getElementById('loginMenu').classList.remove('open'); setTimeout(function(){document.getElementById('getstarted').scrollIntoView({behavior:'smooth'});},40); });
-  });
 
   // ---- login (email whitelist demo) + support request ----
   var ALLOWED={ vendor:['vendor@sunpeak.in','contact@greenvolt.in'], employee:['ramesh@surajsolar.in','suresh@surajsolar.in'] };
